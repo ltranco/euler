@@ -95,6 +95,7 @@ h6 {
 }
 
 p {
+    font-family: "AvenirLT-Roman", Helvetica;
     font-weight:200;
     font-size: 13px;
     line-height: 21px;
@@ -333,6 +334,25 @@ section {
 }
 .book .fa-apple {
     font-style: inherit;
+}
+.problem-list li {
+    width: 300px;
+    vertical-align: top;
+    margin: 10px 5px 10px 5px;
+    display: inline-block;
+}
+.problem-list .full-width {
+    display: block;
+    width: 100%;
+    word-wrap: break-word;
+}
+.problem-list .red {
+    color:#ff3232;
+}
+.problem-list img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 /* Footer */
 footer {
