@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>The number 3797 has an interesting property. Being prime itself, it is possible to continuously remove digits from left to right, and remain prime at each stage: 3797, 797, 97, and 7. Similarly we can work from right to left: 3797, 379, 37, and 3.
+<br>Find the sum of the only eleven primes that are both truncatable from left to right and right to left. <br><br>NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.</p><!--more-->
+
+
+
+<h2>The Catch</h2>
+<p>How to manipulate the digits of a number to check if it is prime truncatable.</p><br><br>
+
+<h2>The Light</h2>
+<p>&clubs; Parsing the number into a String to manipulate the digits and then parsing it back to integers is an inefficient method. Observe the following:
+&nbsp;&nbsp;&nbsp;&nbsp;3797 / 10 = 379
+&nbsp;&nbsp;&nbsp;&nbsp;3797 / 100 = 37
+&nbsp;&nbsp;&nbsp;&nbsp;3797 / 1000 = 3
+Dividing the number by multiples of 10 truncates digits from the right.
+		
+&nbsp;&nbsp;&nbsp;&nbsp;3797 % 10 = 7
+&nbsp;&nbsp;&nbsp;&nbsp;3797 % 100 = 97
+&nbsp;&nbsp;&nbsp;&nbsp;3797 % 1000 = 797
+Modulus the number by multiples of 10 truncates digits from the left.</p>
+
+<p>&clubs; Use prime checking method in <a href=""p3.html"">Problem 3</a> to determine primness.</p>
+
+<h2>The Code</h2>
+[java]
+public class Problem37
+{
+  public static void main(String[] args)
+  {
+    int count = 0;
+    int sum = 0;
+    int ten = 10;
+    boolean leftTrunc = true;
+    boolean rightTrunc = true;
+
+    for(int n = 11; count != 11; n += 2)
+    {
+      if(isPrime(n))
+      {
+        while(ten &lt; n)
+        {
+          if(!isPrime(n/ten))
+    	  {
+    	    leftTrunc = false;
+            break;
+    	  }
+    	  if(!isPrime(n%ten))
+    	  {
+    	    rightTrunc = false;
+    	    break;
+    	  }
+    	  ten *= 10;
+        }
+        if(leftTrunc &amp;&amp; rightTrunc)
+        {
+          ++count;
+    	  sum += n;
+        }
+      }
+      leftTrunc = true;
+      rightTrunc = true;
+      ten = 10;
+    }	  
+    System.out.println(""Sum = "" + sum);
+  }
+
+  public static boolean isPrime(int n)
+  {
+    if( n &lt; 2 )
+      return false; 
+
+    if(n % 2 == 0 &amp;&amp; n != 2)
+      return false;
+
+    for( int i = 3; i * i &lt;= n; i += 2)
+    {
+      if(n % i == 0)
+        return false;
+    }
+
+    return true;
+  }
+}
+[/java]
+[java]Execution time: 87 ms.[/java]"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

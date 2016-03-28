@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
+<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/18a.png"" alt=""18a"" width=""102"" height=""88"" class=""aligncenter size-full wp-image-247"" />
+<p>That is, 3 + 7 + 4 + 9 = 23. Find the maximum total from top to bottom of the triangle below:
+<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/18b.png"" alt=""18b"" width=""459"" height=""274"" class=""aligncenter size-full wp-image-248"" /><!--more-->
+
+
+<b>NOTE:</b> As there are only 16384 routes, it is possible to solve this problem by trying every route. However, <a href=""http://lvtran.com/p67"">Problem 67</a>, is the same challenge with a triangle containing one-hundred rows; it cannot be solved by brute force, and requires a clever method!)</p>
+
+<h2>The Catch</h2>
+<p>If you start from the top number of the triangle like in the example provided, you end up with an incorrect answer... Why is that? 
+<br>If you try every route for each level, that is 16,384 routes to check, which might take more than 1 second to execute.</p>
+
+<h2>The Light</h2>
+<p>The reason for your incorrect answer if you start from the top of the triangle is because of the 			<a href=""http://en.wikipedia.org/wiki/Greedy_algorithm"" target=""_blank"">Greedy algorithm</a>, which is generally used to find the local extrema. For this problem, the answer should be a global extrema, or the greatest sum out of all possible routes.<br>
+
+For example, if the example triangle was changed to<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/18c.png"" alt=""18c"" width=""102"" height=""88"" class=""aligncenter size-full wp-image-249"" />then the global greatest sum is no longer 23. If you take the route 3 &rarr; 4 &rarr; 88 &rarr; 9, the correct global extrema will be 3 + 4 + 88 + 9 = 104. If you just follow the Greedy algorithm, however, you will miss better routes (just like in real life, I suppose...)
+			
+To avoid the Greedy algorithm, start from the bottom of the triangle instead of from the top. We will shrink the triangle from the bottom; notice that for every 2 numbers from 2nd row downward, there is a ""middle"" number on the row above. For instance, <strong>2</strong> in 3rd row is the middle number of <strong>8</strong> and <strong>5</strong> in the 4th row and <strong>4</strong> from the 3rd row is the middle number of <strong>5</strong> and <strong>9</strong> from the 4th row. Starting with the most bottom row, 			take every 2 numbers and add each of them (separately) to their middle number. Replace their middle number with the larger sum. Repeat until the triangle is shrunk to only one number - the answer.
+			
+<br>To demonstrate:
+<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/18d.png"" alt=""18d"" width=""102"" height=""88"" class=""aligncenter size-full wp-image-251"" />8 + 2 = 10 and 5 + 2 = 7, so replace 2 with 10. Repeat for the pair 5 and 9 and 9 and 3, we have <img src=""http://www.lvtran.com/wp-content/uploads/2014/02/18e.png"" alt=""18e"" width=""64"" height=""48"" class=""aligncenter size-full wp-image-252"" /> Then repeat the procedure for the 3rd row; the triangle becomes <img src=""http://www.lvtran.com/wp-content/uploads/2014/02/18f.png"" alt=""18f"" width=""50"" height=""30"" class=""aligncenter size-full wp-image-253"" />At this point, it is clear that the answer is 104, as expected.
+			
+<br>Copy and paste the triangle to a <a href=""https://www.dropbox.com/s/jt4gd5f441q5tef/triangleInput18.txt"" target=""_blank"">	triangleInput18.txt</a> file and use Java's <a href=""http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Scanner.html"" target=""_blank"">Scanner</a> 
+class to read inputs.</p>
+
+<h2>The Code</h2>
+[java]
+import java.io.*;
+import java.util.*;
+
+public class Problem18
+{
+  public static void main(String[] args) throws FileNotFoundException
+  {
+    int row = 15;
+    int rowIndex = 0;
+    int[][] tri = new int[row][];
+
+    Scanner scan = new Scanner(new File(""triangleInput18.txt""));
+    while(scan.hasNextLine())
+    {
+      String s = scan.nextLine();
+      String[] input = s.split("" "");
+
+      tri[rowIndex] = new int[input.length];
+      for( int i = 0; i &lt; input.length; i++ )       
+      {
+         tri[rowIndex][i] = Integer.parseInt(input[i]);
+      }       
+      rowIndex++;	       
+    } 	     
+
+    for(int i = row - 1; i &gt; 0; i--)
+    {
+      int index = 0;
+      for(int j = 0; j &lt; tri[i].length - 1; j++, index++)       
+      {
+        int tmp1 = tri[i][j] + tri[i - 1][index];         
+        int tmp2 = tri[i][j + 1] + tri[i - 1][index];        
+        if(tmp1 &gt; tmp2)
+          tri[i - 1][index] = tmp1;
+        else
+          tri[i - 1][index] = tmp2;
+      }  
+    }
+    System.out.println(""Maximum total from top to bottom: "" + tri[0][0]);
+  }
+}
+[/java]
+[java]Execution time: 18 ms.[/java]"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

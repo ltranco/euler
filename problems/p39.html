@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>If <i>p</i> is the perimeter of a right angle triangle with integral length sides, {<i>a</i>,<i>b</i>,<i>c</i>}, there are exactly three solutions for <i>p</i> = 120: {20,48,52}, {24,45,51}, {30,40,50}. 
+<br>For which value of <i>p</i> &le; 1000, is the number of solutions maximized?</p>
+<!--more-->
+
+
+<h2>The Catch</h2>
+<p>For every value of p, how to find and check different values of the 3 sides a, b, c of a right triangle.</p>
+
+<h2>The Light</h2>
+<p>The 3 sides a, b, and c are related under a<sup>2</sup> + b<sup>2</sup> = c<sup>2 </sup>(<a href=""http://en.wikipedia.org/wiki/Pythagorean_theorem"" target=""_blank"">Pythagorean theorem</a>) and a + b + c = p. Taking advantage of these 2 equations, we have:
+<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/39.png"" alt=""39"" width=""474"" height=""514"" class=""aligncenter size-full wp-image-373"" />
+<p>So if b is an integer, that means a, b, and c are one of p's Pythagorean triplets.</p>
+<p>Recall:
+Sum of 2 odd numbers is even.
+Sum of 2 even numbers is even.
+Sum of an odd and an even number is odd.
+Product of 2 odd numbers is odd.
+Product of 2 even numbers is even.
+Product of an odd and an even number is even.
+
+<p>Analyzing a<sup>2</sup> + b<sup>2</sup> = c<sup>2 </sup>show that:
+If a and b are both even, then c is even and p is even.
+If a and b are both odd, then c is even and p is even.
+If either of a or b is even and the other is odd, then c is odd and p is even.</p>
+
+<p>Thus, <strong>only even values for p have Pythagorean triplets.</strong></p>
+<p>Since a &le; b &lt; c, <strong>a &lt; p/3</strong> because if you divide p into 3 parts, c has to always be greater than the sum of a and b.</p>
+<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/39b.png"" alt=""39b"" width=""455"" height=""79"" class=""aligncenter size-full wp-image-374"" />
+
+<h2>The Code</h2>
+[java]
+public class Problem39
+{
+  public static void main(String[] args)
+  {
+    int max = 0;
+    int maxP = 0;
+    for(int p = 2; p &lt;= 1000; p += 2)
+    {
+      int solution = 0;
+      for(int a = 1; a &lt; p/3; a++)       
+      {
+        if((p*p - 2*p*a) % (2*p - 2*a) == 0)     	  
+          solution++;       
+      }
+      if(solution &gt; max)
+      {
+        max = solution;
+        maxP = p;
+      }
+    }
+    System.out.println(maxP);
+  }
+}
+[/java]
+[java]Execution time: 2 ms.[/java]"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

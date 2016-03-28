@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>The following iterative sequence is defined for the set of positive integers:
+<div align=""center""><p><var>n</var> &rarr; <var>n</var>/2 (<var>n</var> is even)
+<var>n</var> &rarr; 3<var>n</var> + 1 (<var>n</var> is odd)</div>
+<p>Using the rule above and starting with 13, we generate the following sequence:
+<div align=""center""><p>13 &rarr; 40 &rarr; 20 &rarr; 10 &rarr; 5 &rarr; 16 &rarr; 8 &rarr; 4 &rarr; 2 &rarr; 1	</div>
+<p>It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms. Although it has not been proved yet (<a href=""http://mathworld.wolfram.com/CollatzProblem.html"" target=""_blank"">Collatz Problem</a>), it is thought that all starting numbers finish at 1. Which starting number, under one million, produces the longest chain?<!--more-->
+
+
+<b>NOTE:</b> Once the chain starts the terms are allowed to go above one million.</p>
+
+<h2>The Catch</h2>
+<p>How to minimize the amount of calculation for larger numbers; applying the chain-length-finding rule above to large numbers can take a very long time, not to mention there are 999,999 numbers to check.</p>
+
+<h2>The Light</h2>
+<p>Use the idea of caching: store the chain length of each starting number into an array so that the next time that starting number is needed, no extra calculations are required. 
+<br>Example:
+4 &rarr; 2 &rarr; 1 
+Starting number 4 has a chain length of 3; store 3 into an array.
+5 &rarr; 16 &rarr; 8 &rarr; <span style=""color: #ff0000;"">4</span>&rarr; 2 &rarr; 1 
+Starting number 5 becomes 16, then 8, then 4, whose chain length is known and stored in the array. Thus, stop calculating at 4 to see that starting number 5 has a chain length of 1 + 1 + 1 + 3 = 6. Notice that the calculation sequence 4 &rarr; 2 &rarr; 1 is not repeated.
+<br>Simply loop from n = 0 to n = 999,999 and store each n's chain length into an array. Whenever n value gets less than what it started with, stop and use the cached chain length.</p>
+
+<h2>The Code</h2>
+[java]
+public class Problem14
+{
+  public static void main(String[] args)
+  {
+    int[] cachedChain = new int[1000000];
+    int index = 0;
+    int maxChain = 0;
+    int chain = 1;
+    long startNum = 0;
+    long n = 0;
+	
+    for(int i = 1; i <= 1000000; i++)
+    {
+      n = i;
+      while(n != 1)
+      {
+        if(n % 2 == 0)
+          if(n < i)
+          {
+            chain += cachedChain[(int)n - 1];
+            break;
+          }
+          else
+          {
+            n = (n / 2);
+            ++chain;
+          }
+        else
+          if( n < i )
+          {
+            chain += cachedChain[(int)n - 1];
+            break;
+          }
+          else
+          {
+            n = (3 * n) + 1;
+            chain++;
+          }
+      }
+      cachedChain[i - 1] = chain;
+      if( chain > maxChain )
+      {
+        maxChain = chain;
+        startNum = i;
+      }
+      chain = 0;
+    }
+    System.out.println(startNum + "" has chain of "" + maxChain);
+  }
+}
+[/java]
+[java]Execution time: 246 ms.[/java]
+"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

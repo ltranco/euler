@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>You are given the following information, but you may prefer to do some research for yourself.
+<div align=""center""><p>
+			1 Jan 1900 was a Monday.<br>
+			Thirty days has September,<br>
+			April, June and November.<br>
+			All the rest have thirty-one,<br>
+			Saving February alone,<br>
+			Which has twenty-eight, rain or shine.<br>
+			And on leap years, twenty-nine.<br>
+			A leap year occurs on any year evenly divisible by 4, but not on a 
+			century unless it is divisible by 400.
+</div>
+<p>How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</p>
+<!--more-->
+
+
+<h2>The Catch</h2>
+<p>How to determine what day of a week any given date is.</p>
+
+<h2>The Light</h2>
+<p>There are plenty of methods to determine the day of week: from the <a href=""http://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Gauss.27s_algorithm"" target=""_blank"">Gauss's algorithm</a> to the <a href=""http://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Schwerdtfeger.27s_variation"" target=""_blank"">Schwerdtfeger's variation</a>, but there is also a simpler method. Given any date mm/dd/yyyy:
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; Refer to the Month-Offset Table below to find the offset value of mm.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; Define <strong>a = ((value found in step 1) + dd) % 7</strong>.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; Define <strong>b = (the last 2 digits of yyyy) % 28</strong>.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; Define <strong>c = b + b/4</strong>. Drop all the decimal (similar to (int) c).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; Refer to the Century-Offset Table below to find the offset value of yyyy.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; Add <strong>c</strong> to the value in step 5. If mm is Jan or Feb AND yyyy is a leap year, then subtract 1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; Define <strong>d = (a + c) % 7</strong>. Look for d in the Day of the Week Table below to determine the &nbsp;&nbsp;&nbsp;&nbsp;day of the week.<br>
+			
+<div align=""center"">
+Month- Offset Table
+<table align=""center"" border=""1"">
+<tbody>
+<tr>
+			<td align=""center"">Jan</td>
+			<td align=""center"">Feb</td>
+			<td align=""center"">Mar</td>
+			<td align=""center"">Apr</td>
+			<td align=""center"">May</td>
+			<td align=""center"">Jun</td>
+			<td align=""center"">Jul</td>
+			<td align=""center"">Aug</td>
+			<td align=""center"">Sep</td>
+			<td align=""center"">Oct</td>
+			<td align=""center"">Nov</td>
+			<td align=""center"">Dec</td>
+			</tr>
+			<tr>
+			<td align=""center"">0</td>
+			<td align=""center"">3</td>
+			<td align=""center"">3</td>
+			<td align=""center"">6</td>
+			<td align=""center"">1</td>
+			<td align=""center"">4</td>
+			<td align=""center"">6</td>
+			<td align=""center"">2</td>
+			<td align=""center"">5</td>
+			<td align=""center"">0</td>
+			<td align=""center"">3</td>
+			<td align=""center"">5</td>
+			</tr>
+			</tbody>
+			</table>
+			Century-Offset Table
+			<table align=""center"" border=""1"">
+			<tbody>
+			<tr>
+			<td align=""center"">1600's</td>
+			<td align=""center"">1700's</td>
+			<td align=""center"">1800's</td>
+			<td align=""center"">1900's</td>
+			<td align=""center"">2000's</td>
+			</tr>
+			<tr>
+			<td align=""center"">0</td>
+			<td align=""center"">5</td>
+			<td align=""center"">3</td>
+			<td align=""center"">1</td>
+			<td align=""center"">0</td>
+			</tr>
+			</tbody>
+			</table>
+			Day of the Week Table
+			<table align=""center"" border=""1"">
+			<tbody>
+			<tr>
+			<td align=""center"">Sun</td>
+			<td align=""center"">Mon</td>
+			<td align=""center"">Tue</td>
+			<td align=""center"">Wed</td>
+			<td align=""center"">Thu</td>
+			<td align=""center"">Fri</td>
+			<td align=""center"">Sat</td>
+			</tr>
+			<tr>
+			<td align=""center"">1</td>
+			<td align=""center"">2</td>
+			<td align=""center"">3</td>
+			<td align=""center"">4</td>
+			<td align=""center"">5</td>
+			<td align=""center"">6</td>
+			<td align=""center"">7 or 0</td>
+			</tr>
+			</tbody>
+			</table></div>
+			<br><p>Example: December 8th, 1994.
+				a = (5 + 8) % 7 = 6
+				b = 94 % 28 = 10
+				c = 10 + 10/4 = 12.5 = 12
+				c = 1 + c = 1 + 12 = 13
+				d = (6 + 13) % 7 = 5, which is a Thursday.
+		
+This approach is straightforward and simple to implement, but... why not just let Java do the labor: utilize the <a href=""http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Calendar.html"" target=""_blank"">Calendar</a> class.</p>
+
+<h2>The Code</h2>
+[java]
+import java.util.*;
+
+public class Problem19
+{
+  public static void main(String[] args)
+  {
+    Calendar c = Calendar.getInstance();
+    int count = 0;
+
+    for(int i = 1; i &lt;= 100; i++) //Go from 1/1/1901 to 12/31/2000
+    {
+      for(int m = 0; m &lt; 12; m++) //0 is January
+      { 
+        c.set(1900 + i, m, 1);   //The first of every month
+        Date d = c.getTime();
+        if(d.getDay() == 0)
+          count++;
+      }
+    }
+    System.out.println(count);
+  }
+}
+[/java]
+[java]Execution time: 54 ms.[/java]"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

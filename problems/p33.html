@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>The fraction <sup>49</sup>/<sub>98</sub> is a curious fraction, as an inexperienced mathematician in attempting to simplify it may incorrectly believe that <sup>49</sup>/<sub>98</sub> = <sup>4</sup>/<sub>8</sub>, which is correct, is obtained by cancelling the 9s. We shall consider fractions like, <sup>30</sup>/<sub>50</sub> = <sup>3</sup>/<sub>5</sub>, to be trivial examples.
+<br>There are exactly four non-trivial examples of this type of fraction, less than one in value, and containing two digits in the numerator and denominator. 
+<br>If the product of these four fractions is given in its lowest common terms, find the value of the denominator.</p><!--more-->
+
+
+
+<h2>The Catch</h2>
+<p style=""margin-right: 30px;"">How to speed up the current search range (90 * 90 = 8,100 iterations) and avoid trivial cases.<br><br>
+
+<h2>The Light</h2>
+<p style=""margin-right: 30px;"">&clubs; While looping, skip numbers that are divisible by 10 because they are trivial cases.
+<br><br>&clubs; Given ab/cd, where a, b are digits of the numerator and c, d are digits of the denominator (a and b &lt; c and d), ab/cd can only be a curious fraction under one of these four circumstances:
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; a = c
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; a = d
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; b = c
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; b = d</p>
+
+<h2>The Code</h2>
+[java]
+public class Problem33
+{
+  public static void main(String[] args)
+  {
+    for(double n = 10.0; n &lt; 100.0; n++)
+    {
+      for(double d = 10.0; d &lt; 100.0; d++)
+      {		  
+        String sn = Double.toString(n);
+        String sd = Double.toString(d);
+        if(n &lt; d &amp;&amp; n % 10.0 != 0.0 &amp;&amp; d % 10.0 != 0.0)
+        {
+          double tmp = n/d;
+          double tmp2 = 0.0;
+          double tmpn = 0.0;
+          double tmpd = 0.0; 
+          if(sn.charAt(0) == (sd.charAt(0)))			   
+          {
+            tmpn = Character.getNumericValue(sn.charAt(1));
+            tmpd = Character.getNumericValue(sd.charAt(1));
+            tmp2 = tmpn/tmpd;
+            if(tmp2 == tmp)
+              System.out.println(n + ""/"" + d);
+            continue;
+          }
+          if(sn.charAt(0) == (sd.charAt(1)))			   
+          {
+            tmpn = Character.getNumericValue(sn.charAt(1));
+            tmpd = Character.getNumericValue(sd.charAt(0));
+            tmp2 = tmpn/tmpd;
+            if(tmp2 == tmp)
+              System.out.println(n + ""/"" + d);
+            continue;
+          }
+          if(sn.charAt(1) == (sd.charAt(0)))			   
+          {
+            tmpn = Character.getNumericValue(sn.charAt(0));
+            tmpd = Character.getNumericValue(sd.charAt(1));
+            tmp2 = tmpn/tmpd;
+            if(tmp2 == tmp)
+              System.out.println(n + ""/"" + d);
+            continue;
+          }
+          if(sn.charAt(1) == (sd.charAt(1)))			   
+          {
+            tmpn = Character.getNumericValue(sn.charAt(0));
+            tmpd = Character.getNumericValue(sd.charAt(0));
+            tmp2 = tmpn/tmpd;
+            if(tmp2 == tmp)
+              System.out.println(n + ""/"" + d);
+            continue;
+          }		
+        }
+      }
+    }
+  }
+}
+[/java]
+<p>After execution, 4 fractions are found: 16/64, 19/95, 26/65, 49/98. Their products = 387296/38729600 = <strong>1/100</strong></p>
+[java]Execution time: 55 ms. [/java]"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

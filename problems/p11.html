@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>In the 20 x 20 grid below, four numbers along a diagonal line have been marked in red. The product of these numbers is 26 * 63 * 78 * 14 = 1788696. What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20 x 20 grid?</p>
+<!--more-->
+
+
+<p style=""text-align: center;"">08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08<br>
+49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00<br>
+81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65<br>
+52 70 95 23 04 60 11 42 69 24 68 56 01 32 56 71 37 02 36 91<br>
+22 31 16 71 51 67 63 89 41 92 36 54 22 40 40 28 66 33 13 80<br>
+24 47 32 60 99 03 45 02 44 75 33 53 78 36 84 20 35 17 12 50<br>
+32 98 81 28 64 23 67 10 <span style=""color: #ff0000;""><b>26</b></span> 38 40 67 59 54 70 66 18 38 64 70<br>
+67 26 20 68 02 62 12 20 95 <span style=""color: #ff0000;""><b>63</b></span> 94 39 63 08 40 91 66 49 94 21<br>
+24 55 58 05 66 73 99 26 97 17 <span style=""color: #ff0000;""><b>78</b></span> 78 96 83 14 88 34 89 63 72<br>
+21 36 23 09 75 00 76 44 20 45 35 <span style=""color: #ff0000;""><b>14</b></span> 00 61 33 97 34 31 33 95<br>
+78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92<br>
+16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57<br>
+86 56 00 48 35 71 89 07 05 44 44 37 44 60 21 58 51 54 17 58<br>
+19 80 81 68 05 94 47 69 28 73 92 13 86 52 17 77 04 89 55 40<br>
+04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66<br>
+88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69<br>
+04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36<br>
+20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16<br>
+20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54<br>
+01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48<br></p>
+<br>
+
+<h2>The Catch</h2>
+<p>This problem is fairly straightforward; there is no other way but to check all routes of the 20 x 20 grid.</p>
+
+<h2>The Light</h2>
+<p>Checking columns and rows are simple: just loop through each row and column and find the product of every 4 entries. Checking 2 left	and right diagonals require more check points to prevent out of bound exception.</p>
+
+<h2>The Code</h2>
+[java]
+public class Problem11
+{
+  public static void main( String[] args )
+  {
+    int[][] a = new int[20][20];
+    int[] a1d = { 8, 02, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91,  8,
+                 49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 00,
+                 81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 03, 49, 13, 36, 65,
+                 52, 70, 95, 23, 04, 60, 11, 42, 69, 24, 68, 56, 01, 32, 56, 71, 37, 02, 36, 91,
+                 22, 31, 16, 71, 51, 67, 63, 89, 41, 92, 36, 54, 22, 40, 40, 28, 66, 33, 13, 80,
+                 24, 47, 32, 60, 99, 03, 45, 02, 44, 75, 33, 53, 78, 36, 84, 20, 35, 17, 12, 50,
+                 32, 98, 81, 28, 64, 23, 67, 10, 26, 38, 40, 67, 59, 54, 70, 66, 18, 38, 64, 70,
+                 67, 26, 20, 68, 02, 62, 12, 20, 95, 63, 94, 39, 63,  8, 40, 91, 66, 49, 94, 21,
+                 24, 55, 58, 05, 66, 73, 99, 26, 97, 17, 78, 78, 96, 83, 14, 88, 34, 89, 63, 72,
+                 21, 36, 23,  9, 75, 00, 76, 44, 20, 45, 35, 14, 00, 61, 33, 97, 34, 31, 33, 95,
+                 78, 17, 53, 28, 22, 75, 31, 67, 15, 94, 03, 80, 04, 62, 16, 14,  9, 53, 56, 92,
+                 16, 39, 05, 42, 96, 35, 31, 47, 55, 58, 88, 24, 00, 17, 54, 24, 36, 29, 85, 57,
+                 86, 56, 00, 48, 35, 71, 89, 07, 05, 44, 44, 37, 44, 60, 21, 58, 51, 54, 17, 58,
+                 19, 80, 81, 68, 05, 94, 47, 69, 28, 73, 92, 13, 86, 52, 17, 77, 04, 89, 55, 40,
+                 04, 52,  8, 83, 97, 35, 99, 16, 07, 97, 57, 32, 16, 26, 26, 79, 33, 27, 98, 66,
+                 88, 36, 68, 87, 57, 62, 20, 72, 03, 46, 33, 67, 46, 55, 12, 32, 63, 93, 53, 69,
+                 04, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18,  8, 46, 29, 32, 40, 62, 76, 36,
+                 20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 04, 36, 16,
+                 20, 73, 35, 29, 78, 31, 90, 01, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 05, 54,
+                 01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48,};
+    int index = 0;
+    int max = 0;
+    int product = 0;
+
+    for(int x = 0; x &lt; a.length; x++)
+    {
+      for(int y = 0; y &lt; a.length; y++)
+      {
+        a[x][y] = a1d[index++];
+      }
+    }
+
+    //Check columns
+    int x3 = 0;
+    for(int y = 0; y &lt; a.length; y++)
+    {
+      while(x3 &lt; a.length - 3)       
+      {         
+        product = a[x3][y] *                    
+                  a[x3 + 1][y] *
+                  a[x3 + 2][y] *                    
+                  a[x3 + 3][y];
+        if(product &gt; max)
+          max = product;
+
+        ++x3;
+      }
+      x3 = 0;
+    }
+
+    //Check rows
+    int y4 = 0;
+    for( int x = 0; x &lt; a.length; x++)
+    {
+      while(y4 &lt; a.length - 3)       
+      {         
+        product = a[x][y4] *                    
+                  a[x][y4 + 1] *                    
+                  a[x][y4 + 2] *                    
+                  a[x][y4 + 3];          
+    
+        if(product &gt; max)
+          max = product;
+
+        ++y4;
+      }
+      y4 = 0;
+    }
+
+    //Check left diagonal below
+    int x = 1;
+    int tmp = 1;
+    while(x &lt; a.length - 3)
+    {
+      for(int y = 0; y &lt; a.length - 3 - tmp; y++)       
+      {         
+        product = a[x][y] *                    
+                  a[x + 1][y + 1] *                    
+                  a[x + 1][y + 2] *                    
+                  a[x + 1][y + 3];               
+
+        if(product &gt; max)
+          max = product;
+
+        ++x;
+      }
+      x = ++tmp;
+    }
+
+    //Chek left diagonal above
+    int x2 = 1;
+    int tmp2 = 1;
+    while(x2 &lt; a.length - 3)
+    {
+      for(int y = 0; y &lt; a.length - 3 - tmp2; y++)       
+      {         
+        product = a[y][x2] *                    
+                  a[y + 1][x2 + 1] *                    
+                  a[y + 2][x2 + 2] *                    
+                  a[y + 3][x2 + 3];          
+
+        if(product &gt; max)
+          max = product;
+
+        ++x2;
+      }
+      x2 = ++tmp2;
+    }
+
+    //Check left diagonal middle line
+    for(int i = 0; i &lt; a.length - 3; i++)     
+    {       
+      product = a[i][i] *                  
+                a[i + 1][i + 1] *                  
+                a[i + 2][i + 2] *                  
+                a[i + 3][i + 3];        
+
+      if(product &gt; max)
+        max = product;
+    }
+
+    //Check right diagonal above and diagonal middle line
+    int x5 = 3;
+    int tmp5 = 3;
+    int count = 16;
+    while(x5 &lt; a.length)
+    {
+      for(int y = 0; y &lt; a.length - 3 - count; y++)       
+      {         
+        product = a[x5][y] *                    
+                  a[x5 - 1][y + 1] *                    
+                  a[x5 - 2][y + 2] *                    
+                  a[x5 - 3][y + 3];          
+ 
+        if(product &gt; max)
+          max = product;
+
+        x5--;
+      }
+      count--;
+      x5 = ++tmp5;
+    }
+
+    //Check right diagonal below
+    int y6 = 1;
+    int tmp6 = 1;
+    while(y6 &lt; a.length - 3)     
+    {       
+      for(x = a.length - 1; x &gt; 3 &amp;&amp; y6 &lt; a.length - 3; x--)       
+      {         
+        product = a[x][y6] *                    
+                  a[x - 1][y6 + 1] *                    
+                  a[x - 2][y6 + 2] *                    
+                  a[x - 3][y6 + 3];          
+
+        if(product &gt; max)
+          max = product;
+
+        y6++;
+      }
+      y6 = ++tmp6;	  
+    }
+    System.out.println(max);
+  }
+}
+[/java]
+[java]Execution time: 1 ms.[/java]"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

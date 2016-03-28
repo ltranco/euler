@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17. Find the sum of all the primes below two million.</p>
+<!--more-->
+
+
+<h2>The Catch</h2>
+<p>How to efficiently generate a list of prime below a given upper bound.</p>
+
+<h2>The Light</h2>
+<p>Including the first prime number, 2, in a sum variable, we can loop from 3 to 2,000,000 and reuse the prime checking code in <a href=""http://lvtran.com/p3"">Problem 3</a> and increment for every odd number. The sum will probably get too large for a type <b>int</b> variable to hold, causing a <a href=""http://stackoverflow.com/questions/3001836/how-does-java-handle-integer-underflows-and-overflows-and-how-would-you-check-fo"" target=""_blank""> number overflow error</a>. Use a type <b>long</b> variable to solve this issue. This approach, however, requires approximately 1,000,000 iterations and takes as long as half a second to execute, which is not very efficient.<br><br>
+The <a href=""http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes"" target=""_blank""> Sieve of Eratosthenes</a> discussed in <a href=""http://lvtran.com/p35"" target=""_blank"">Problem 35</a> will yield a much better result.</p>
+
+<h2>The Code</h2>
+[java]
+import java.util.*;
+
+public class Problem10
+{
+  public static void main(String[] args)
+  {
+    long sum = 0;
+    List primeList = generatePrimes(2000000);        
+
+    for(int i = 0; i &lt; primeList.size(); i++)
+    {
+      sum += primeList.get(i);
+    }
+    System.out.println(sum); 
+  }
+
+  public static List generatePrimes(int max) 
+  {
+    boolean[] isComposite = new boolean[max + 1];
+    for (int i = 2; i * i &lt;= max; i++) 
+    {
+      if (!isComposite [i]) 
+        for (int j = i; i * j &lt;= max; j++) 
+        {
+          isComposite [i*j] = true;
+        }
+    }   
+    ArrayList list = new ArrayList();
+
+    for (int i = 2; i &lt;= max; i++)  
+    {
+      if (!isComposite [i]) 
+        list.add(new Integer(i));
+    }
+    return list;
+  }
+}
+[/java]
+[java]Execution time: 24 ms.[/java]"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

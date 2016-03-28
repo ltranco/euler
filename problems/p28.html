@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>Starting with the number 1 and moving to the right in a clockwise direction a 5 by 5 spiral is formed as follows:
+<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/28a.png"" alt=""28a"" width=""149"" height=""104"" class=""aligncenter size-full wp-image-314"" />
+<p>It can be verified that the sum of the numbers on the diagonals is 101. What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?</p><!--more-->
+
+
+
+<h2>The Catch</h2>
+<p>Discover the pattern that generates the numbers that lay on the 2 diagonals.</p>
+
+<h2>The Light</h2>
+<p>Take a look at a smaller square:<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/28b.png"" alt=""28b"" width=""75"" height=""54"" class=""aligncenter size-full wp-image-315"" />
+This is a 3 x 3 square with side equals 3. Notice that the top-right corner number <strong>a</strong> can be computed using the formula <strong>a</strong> = <strong> (2*i + 1)</strong><sup><strong>2</strong> </sup>where <strong>i</strong> &gt;= 1. Starting with <strong>i</strong> = 1, a = (2*1 + 1)<sup>2</sup> = 9.
+<br>Then, notice that the top-left corner number <strong>b </strong>can be computed using the formula <strong>b</strong> = <strong>a</strong> - 2*<strong>i</strong> with the same i that formulated <strong>a</strong>. So <strong>b</strong> = 9 - 2*1 = 7.
+<br>Similarly, bottom-left corner number <strong>c</strong> can be computed using <strong>c = b - 2*i</strong> with the same <strong>i</strong> that formulated<strong> b</strong>. So <strong>c</strong> = 7 - 2*1 = 5.
+<br>Lastly, bottom-right corner number <strong>d</strong> can be computed using <strong>d = c - 2*i</strong> with the same <strong>i</strong> that formulated <strong>c</strong>. So <strong>d</strong> = 5 - 2*1 = 3.
+<br>With the 3 x 3 square, <strong>i</strong> increments to 1. If you repeat this pattern for the 5 x 5 square<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/28a.png"" alt=""28a"" width=""149"" height=""104"" class=""aligncenter size-full wp-image-314"" /> the number <strong>i </strong>increments to 2. Due to the spiral nature of these n x n squares, n cannot be even. Thus <strong>i</strong> only increments to n/2, dropping all decimals.</p>
+
+<h2>The Code</h2>
+[java]
+public class Problem28
+{
+  public static void main(String[] args)
+  {
+    int total = 1;                     //Sequence starts with 1, the ring number
+    int width = 1001/2;                  
+    for(int i = 1; i &lt;= width; i++)
+    {
+      int tmp = (2*i + 1) * (2*i + 1);
+      total += tmp;
+
+      //Moving counter clockwise
+      tmp = tmp - 2*i;
+      total += tmp;
+
+      tmp = tmp - 2*i;
+      total += tmp;
+
+      tmp = tmp - 2*i;
+      total += tmp;
+    }
+    System.out.println(total);
+  }
+}
+[/java]
+[java]Execution time: 0 ms.[/java]"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

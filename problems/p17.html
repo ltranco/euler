@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total. If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?<!--more-->
+
+
+<br><b>NOTE:</b> Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. The use of ""and"" when writing out numbers is in compliance with British usage.</p>
+
+<h2>The Catch</h2>
+<p>How to efficiently calculate the number of letters of 1,000 numbers when they are spelled out.</p>
+
+<h2>The Light</h2>
+<p>The number Divide 1,000 numbers into groups based on the similarity of their spellings:
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; 1 - 20
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; 21 - 99
+&nbsp;&nbsp;&nbsp;&nbsp;&diams; 100 - 999
+Reuse the result of previous groups on the latter groups. For example, 128 (one hundred twenty eight) can use 1 (one) from the first group and 28 (twenty eight) from the second group.</p>
+
+<h2>The Code</h2>
+[java]
+public class Problem17
+{
+  public static void main(String[] args)
+  {
+    String[] arr1 = new String[99];
+    int arr1Index = 0;
+
+    String[] singleD = {""one"", ""two"", ""three"", ""four"", ""five"", 
+                        ""six"", ""seven"", ""eight"", ""nine""};
+
+    String ten = ""ten"";
+    String eleven = ""eleven"";
+    String twelve = ""twelve"";
+    String thirteen = ""thirteen"";
+    String fifteen = ""fifteen"";
+    String eighteen = ""eighteen"";
+    String teen = ""teen"";
+
+    String ty = ""ty"";
+    String twenty = ""twenty"";
+    String thirty = ""thirty"";
+    String forty = ""forty"";
+    String fifty = ""fifty"";
+    String eighty = ""eighty"";
+    String[] tens = new String[8];
+    for(int j = 0; j &lt; tens.length; j++)
+    {
+      if(j == 0) 
+      {
+        tens[j] = twenty;
+        continue;
+      }
+      if(j == 1)
+      {
+        tens[j] = thirty;
+        continue;
+      }
+      if(j == 2)
+      {
+        tens[j] = forty;
+        continue;
+      }
+      if(j == 3)
+      {
+        tens[j] = fifty;
+        continue;
+      }
+      if(j == 6)
+      {
+        tens[j] = eighty;
+        continue;
+      }
+      tens[j] = singleD[ j + 1] + ty;
+    }
+
+    String and = ""and"";
+    String hundred = ""hundred"";
+
+    //PRINT OUT THE NUMBERS 1- 20
+    for(int i = 1; i &lt;= 20; i++)
+    { 
+      if(i &lt; 10)
+        arr1[arr1Index++] = singleD[i - 1];
+
+      if(i &gt;= 10 &amp;&amp; i &lt;= 20)
+        switch(i)
+        {
+          case 10: arr1[arr1Index++] = ten;
+                   break;
+          case 11: arr1[arr1Index++] = eleven;
+                   break;
+          case 12: arr1[arr1Index++] = twelve;
+                   break;
+          case 13: arr1[arr1Index++] = thirteen;
+                   break;
+          case 15: arr1[arr1Index++] = fifteen;
+                   break;
+          case 18: arr1[arr1Index++] = eighteen;
+                   break;
+          case 20: arr1[arr1Index++] = twenty;
+                   break;
+          default: arr1[arr1Index++] = (singleD[i - 10 - 1] + teen);
+                   break;
+        }		
+    }
+
+    //PRINT OUT NUMBER 21 - 99
+    for(int x = 21, index = 0, sIndex = 0; x &lt;= 99; x++)
+    { 	 
+      if(x % 10 == 0)
+      {
+        arr1[arr1Index++] = tens[x/10 - 2] ;
+        continue;
+      }
+
+      if(x &gt; 40 &amp;&amp; x &lt; 50)
+      {
+        arr1[arr1Index++] = ""forty"" + singleD[sIndex++];
+        if(sIndex &gt; 8 &amp;&amp; index &lt; 8)
+        {
+          sIndex = 0;
+          index++;
+        }
+        continue;
+      }
+
+      if(x &gt; 80 &amp;&amp; x &lt; 90)
+      {
+        arr1[arr1Index++] = ""eighty"" + singleD[sIndex++];
+        if(sIndex &gt; 8 &amp;&amp; index &lt; 8)
+        {
+          sIndex = 0;
+          index++;
+        }
+        continue;
+      }
+
+      arr1[arr1Index++] = tens[index] + singleD[sIndex++];
+      if(sIndex &gt; 8 &amp;&amp; index &lt; 8)
+      {
+        sIndex = 0;
+        index++;
+      } 	  
+    }
+
+    String[] arr2 = new String[901];
+    arr2[900] = ""onethousand"";
+    int arr2Index = 0;
+
+    //PRINT OUT NUMBER 100 - 999
+    for(int y = 100, index2 = 0, index3 = 0; y &lt; 1000; y++)
+    {
+      if(y % 100 == 0)
+      {
+        arr2[arr2Index++] = singleD[y/100 - 1] + hundred;
+        continue;
+      }
+
+      arr2[arr2Index++] = singleD[index2] + hundred + and + arr1[index3++];
+      if(index3 &gt; 98)
+      {
+        index3 = 0;
+        index2++;
+      }	  
+    }
+
+    int sum = 0;
+
+    for(int k = 0; k &lt; arr1.length; k++)
+    {
+      sum += arr1[k].length();
+    }
+    for(int o = 0; o &lt; arr2.length; o++)
+    {
+      sum += arr2[o].length();
+    }
+    System.out.println(""The total number of characters: "" + sum);
+  }
+}
+[/java]
+[java]Execution time: 3 ms.[/java]
+"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

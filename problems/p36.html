@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>The decimal number, 585 = 1001001001<sub>2</sub> (binary), is palindromic in both bases.
+<br>Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2. (Please note that the palindromic number, in either base, may not include leading zeros.)</p><!--more-->
+
+
+
+<h2>The Catch</h2>
+<p>How to convert a decimal number to binary.
+How to check if a number is palindromic.</p>
+
+<h2>The Light</h2>
+<p>&clubs; To convert a decimal number to binary, divide the number by 2 and list out the remainders for every division until the quotient is reduced to 0. Reverse the remainder list to find the binary result. 
+
+For example, convert 12 to binary:
+<table>
+<tr>
+<td><p>Quotient</td>
+<td><p>Remainer</td>
+</tr>
+<tr>
+<td><p>12/2</td>
+<td><p>0</td>
+</tr>
+<tr>
+<td><p>6/2</td>
+<td><p>0</td>
+</tr>
+<tr>
+<td><p>3/2</td>
+<td><p>1</td>
+</tr>
+<tr>
+<td><p>1/2</td>
+<td><p>1</td>
+</tr>			
+</table>
+<p style=""margin-right: 30px;"">12 in binary is 1100. You can either implement this approach or use Java's <a href=""http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Integer.html"" target=""_blank"">Integer</a> class' built-in function that converts decimal number to binary.</p>
+			
+<p>&clubs; Use the discussion in <a href=""http://lvtran.com/p4/"" target=""_blank"">Problem 4</a> on how to check if a number is palindromic.</li>
+</ul></p><br><br>
+
+<h2>The Code</h2>
+[java]
+public class Problem36
+{
+  public static void main(String[] args)
+  {
+    int sum = 0;
+
+    for(int i = 1; i &lt; 1000000; i++)
+    {
+      String s = Integer.toString(i);
+      if(isPalin(s) &amp;&amp; isPalin(Integer.toBinaryString(i)))
+        sum += i;
+    }
+    System.out.println(sum);
+  }
+
+  public static boolean isPalin(String s)
+  {
+    for(int i = 0; i &lt; s.length()/2; i++)
+    {
+      if(s.charAt(i) != s.charAt(s.length() - 1 - i))
+        return false;
+    }
+    return true;
+  }
+}    
+[/java]
+[java]Execution time: 72 ms.[/java]"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Long Tran</title>
+    <meta name="keywords" content="Long Tran Euler"/>
+    <meta name="description" content="Project Euler solved by Long Tran."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="animated fadeIn container">
+      <div class="container">
+        <header>
+          <h1>Project Euler</span></h1>
+          <h3>A Taste of Number Theory</h3>
+          <h3>
+            <ul class="socials">
+              <li>
+                <a href="mailto:ltranco8@gmail.com">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/in/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://facebook.com/longtran812/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/lvtr4n/" target="_blank">
+                <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                </a>
+              </li>
+            </ul>
+          </h3>
+        </header>
+        <section class="story">
+          <section>
+            <h2 id=""></h2>
+            <h4>Problem</h4>
+"<p>We shall say that an <i>n</i>-digit number is pandigital if it makes use of all the digits 1 to <i>n</i> exactly once. For example, 2143 is a 4-digit pandigital and is also prime.
+<p>What is the largest <i>n</i>-digit pandigital prime that exists?</p><!--more-->
+
+
+
+<h2>The Catch</h2>
+<p style=""margin-right: 30px;"">How to check if a number is pandigital.
+How to efficiently check if pandigital numbers are also prime, since checking from 2 to 978,654,321 is extremely time consuming.</p>
+
+<h2>The Light</h2>
+<p>&clubs; A pandigital number uses each digit from 1 - 9 exactly once, thus there are essentially 9 ""templates"" for pandigital numbers. The only 1-digit pandigital number is 1. If you take the digits from any 2-digit pandigital number and sort them numerically, you will get <strong>12</strong>. Similarly, if you take the digits from any 3-digit pandigital number and sort them numerically, you will get <strong>123.</strong> This concept applies for all pandigital numbers, so make 9 static template pandigital numbers. To check if a number with n-digits is pandigital, sort all digits numerically and if the result matches with n-digit template, then the number is pandigital.
+			
+<p>&clubs; Recall that a number is divisible by 3 if and only if the digit sum of the number is divisible by 3. The list below shows that only 4-digit and 7-digit pandigital numbers can be prime, since the others are divisible by 3. Thus first check from the largest 7-digit pandigital number downward for the largest instance of a pandigital-prime-number. If it is not found, move to the 4-digit numbers range.
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 = 3
+&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 = 6
+&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 = 10
+&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 + 5 = 15
+&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 + 5 + 6 = 21
+&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 + 5 + 6 + 7 = 28
+&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36
+&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45
+
+<p>&clubs; Since primes are odd, eliminate all even numbers in the search to speed up execution. Use discussion in <a href=""http://lvtran.com/p3/"">Problem 3</a> to check for prime numbers.</p>
+
+<h2>The Code</h2>
+[java]
+import java.util.*;
+
+public class Problem41
+{
+  public static char[][] p = {""1"".toCharArray(), ""12"".toCharArray(), 
+                              ""123"".toCharArray(), ""1234"".toCharArray(),
+                              ""12345"".toCharArray(), ""123456"".toCharArray(), 
+                              ""1234567"".toCharArray(), ""12345678"".toCharArray(), 
+                              ""123456789"".toCharArray()};
+
+  public static void main(String[] args)
+  {
+    for(int i = 7654321; i &gt; 1000000; i -= 2)
+    {
+      if(isPan(i))
+        if(isPrime(i))
+        {
+          System.out.println(i);
+          break;
+        }
+    }
+  }
+
+  public static boolean isPrime(int n)
+  {
+    if(n &lt; 2)
+      return false;
+
+    if(n != 2 &amp;&amp; n % 2 == 0)
+      return false;
+
+    for(int i = 3; i * i &lt; n; i++)
+    {
+      if(n % i == 0)
+        return false;
+    }
+
+    return true;
+  }
+
+  public static boolean isPan(int n)
+  {
+    String s = Integer.toString(n);
+    char[] c = s.toCharArray();
+    Arrays.sort(c);
+    return (Arrays.equals(c, p[c.length - 1]));	
+  }
+}
+[/java]
+[java]Execution time: 3 ms.[/java]"
+</section>
+        </section>
+        <section>
+          <ul>
+            <li class="footer">
+              <p>Long Tran &copy; 2016</p>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
+  </body>
+</html>
