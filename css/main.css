@@ -94,6 +94,16 @@ h6 {
 .about h4 {
     margin-top: 1em;
 }
+.problem19, .problem19 td, .problem19 tr {
+    font-family: "AvenirLT-Roman", Helvetica;
+    font-weight: 200;
+    font-size: 12px;
+    text-align: center;
+}
+.problem19 td {
+    border: 1px solid black;
+    padding: 3px;
+}
 
 p {
     font-family: "AvenirLT-Roman", Helvetica;
@@ -247,7 +257,6 @@ section ul {
 section img {
     margin-left: auto;
     margin-right: auto;
-    width: 300px;
     height: auto;
     display: block;
 }
