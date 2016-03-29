@@ -6,8 +6,9 @@
     <meta name="keywords" content="Long Tran Euler"/>
     <meta name="description" content="Project Euler solved by Long Tran."/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico"/>
     <link rel="stylesheet" href="../css/main.css">
+    <link href="../css/shThemeDefault.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
@@ -64,17 +65,17 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem</h4>
-"<p style=""margin-right: 30px;"">The number 197 is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime. There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97. How many circular primes are there below one million?</p><!--more-->
+            <h4>Problem : </p></h4>
+"<p style="margin-right: 30px;">The number 197 is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime. There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97. How many circular primes are there below one million?</p>
 
 
 		
-<h2>The Catch</h2>
+<h4>The Catch</h4>
 <p>How to rotate a number.
 How to speed up the execution time since the current search range is from 1 to 1,000,000. Even if only odd numbers are checked, the search range is still 500,000 iterations.</p>
 
-<h2>The Light</h2>
-<p>&clubs;&nbsp;Utilizing digit-manipulating technique like in <a href=""http://lvtran.com/p37/"">Problem 37</a>, to rotate a number <strong>n</strong>:
+<h4>The Light</h4>
+<p>&clubs;&nbsp;Utilizing digit-manipulating technique like in <a href="/euler/problems/p37/">Problem 37</a>, to rotate a number <strong>n</strong>:
 &nbsp;&nbsp;&nbsp;&nbsp;&diams; Find out how many<strong> rotation</strong> is needed. The number of rotation equals the number of digits <strong>n</strong> has. Divide <strong>(int) n</strong> by <strong>10</strong> to determine.
 &nbsp;&nbsp;&nbsp;&nbsp;&diams; Find a multiplier for <strong>n</strong>. The multiplier should be <strong>10<sup>(number of digits of n)</sup></strong>.
 &nbsp;&nbsp;&nbsp;&nbsp;&diams; One of a rotated version of <strong>n = (n % 10 * multiplier) + (n/10)</strong>.
@@ -88,8 +89,8 @@ For example, to rotate the number 812:
 &nbsp;&nbsp;&nbsp;&nbsp;&diams; Rotate 128 = 812 (which is why this 3rd rotation is unnecessary).</p>
 
 <p>&clubs;&nbsp;If one digit of the number <strong>n </strong>is an even number or 5, then this number is not a prime and thus it not a ... circular prime.</p>
-<p>&clubs;&nbsp;Instead of looping through every odd, positive, natural number (which results in 500,000 iterations), loop through a list of prime numbers below an upper bound. It can be checked that this will result in only 78,498 iterations. To create this list of prime numbers, it is not efficient to loop from 2 to the upper bound and use the traditional prime check. Instead, there is a method called <a href=""http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes"">Sieve of Eratosthenes</a> invented by
-<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/p35a.png"" alt=""p35a"" width=""278"" height=""275"" class=""aligncenter size-full wp-image-348"" />
+<p>&clubs;&nbsp;Instead of looping through every odd, positive, natural number (which results in 500,000 iterations), loop through a list of prime numbers below an upper bound. It can be checked that this will result in only 78,498 iterations. To create this list of prime numbers, it is not efficient to loop from 2 to the upper bound and use the traditional prime check. Instead, there is a method called <a href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a> invented by
+<img src="http://www.lvtran.com/wp-content/uploads/2014/02/p35a.png" alt="p35a" width="278" height="275" class="aligncenter size-full wp-image-348" />
 It generates all prime numbers below 1,000,000 within 15-20 ms. The algorithm:
 &nbsp;&nbsp;&nbsp;&nbsp;&diams; Create a list of natural number from <strong>2</strong> to the upper bound.
 &nbsp;&nbsp;&nbsp;&nbsp;&diams; Set <strong>p = 2</strong>, the first number of the list.
@@ -98,13 +99,13 @@ It generates all prime numbers below 1,000,000 within 15-20 ms. The algorithm:
 &nbsp;&nbsp;&nbsp;&nbsp;&diams; Repeat step 3 and 4 until <strong>p &lt;=</strong> <strong>sqrt(upper bound)</strong>. (NOTE: some numbers will be marked several times; this is okay)
 &nbsp;&nbsp;&nbsp;&nbsp;&diams; The unmarked numbers left in the list are all prime.
 
-<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/p35b.gif"" alt=""p35b"" width=""445"" height=""369"" class=""aligncenter size-full wp-image-349"" />
-<p align=""center"">(image courtesy of Wikipedia)</p>
+<img src="http://www.lvtran.com/wp-content/uploads/2014/02/p35b.gif" alt="p35b" width="445" height="369" class="aligncenter size-full wp-image-349" />
+<p align="center">(image courtesy of Wikipedia)</p>
 <p>&clubs;&nbsp;When creating the Sieve of Eratosthenes, it is best to store the result in a list L. It is, however, very costly (execution-time wise) to check if a number is prime by checking if 
-it is in the list L. Thus, use the traditional prime check as discussed in <a href=""p3.html"">Problem 3</a>.</p>
+it is in the list L. Thus, use the traditional prime check as discussed in <a href="p3.html">Problem 3</a>.</p>
 
-<h2>The Code</h2>
-[java]
+<h4>The Code</h4>
+<pre class="brush: java">
 import java.util.*;
 
 public class Problem35
@@ -192,9 +193,13 @@ public class Problem35
     return true;
   }
 }
-[/java]
-[java]Execution time: 28 ms.[/java]"
-</section>
+</pre>
+
+<div class="navigation">
+            <p><a href="/euler/problems/p8">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+          </div>
+          </section>
         </section>
         <section>
           <ul>
@@ -205,6 +210,10 @@ public class Problem35
         </section>
       </div>
     </div>
+    <script src="../js/shCore.js" type="text/javascript"></script>
+    <script src="../js/shAutoloader.js" type="text/javascript"></script>
+    <script src="../js/shBrushJava.js" type="text/javascript"></script>
+    <script type="text/javascript">SyntaxHighlighter.all()</script>
     <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
   </body>
 </html>

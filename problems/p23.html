@@ -6,8 +6,9 @@
     <meta name="keywords" content="Long Tran Euler"/>
     <meta name="description" content="Project Euler solved by Long Tran."/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico"/>
     <link rel="stylesheet" href="../css/main.css">
+    <link href="../css/shThemeDefault.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
@@ -64,28 +65,28 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem</h4>
-"<p>A perfect number is a number for which the sum of its proper divisors is exactly equal to the number. For example, the sum of the proper divisors of 28 would be 1 + 2 + 4 + 7 + 14 = 28, which means that 28 is a perfect number. 
+            <h4>Problem : </p></h4>
+<p>A perfect number is a number for which the sum of its proper divisors is exactly equal to the number. For example, the sum of the proper divisors of 28 would be 1 + 2 + 4 + 7 + 14 = 28, which means that 28 is a perfect number. 
 <br><br>A number <i>n</i> is called deficient if the sum of its proper divisors is less than <i>n</i> and it is called abundant if this sum exceeds <i>n</i>.
 <br><br>As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest number that can be written as the sum of two abundant numbers is 24. By mathematical analysis, it can be shown that all integers greater than 28123 can be written as the sum of two abundant numbers. However, this upper limit cannot be reduced any further by analysis even though it is known that the greatest number that cannot be expressed as the sum of two abundant numbers is less than this limit. 
-<br><br>Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.</p><!--more-->
+<br><br>Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.</p>
 
 
 
-<h2>The Catch</h2>
+<h4>The Catch</h4>
 <p>How to efficiently find the sum of all proper divisors.
 How to determine if a number can be written as a sum of 2 abundant numbers.</p>
 
-<h2>The Light</h2>
-<p>&clubs; We can certainly use the implementation in <a href=""http://lvtran.com/p21/"">Problem 21</a> to find the sum of all proper divisors. There is another	way, however, that is just as elegant: the <a href=""http://en.wikipedia.org/wiki/Prime_factor#Omega_functions"" target=""_blank"">Omega function</a>:
-<img src=""http://www.lvtran.com/wp-content/uploads/2014/02/23a.png"" alt=""23a"" width=""669"" height=""158"" class=""aligncenter size-full wp-image-292"" />
+<h4>The Light</h4>
+<p>&clubs; We can certainly use the implementation in <a href="/euler/problems/p21/">Problem 21</a> to find the sum of all proper divisors. There is another	way, however, that is just as elegant: the <a href="http://en.wikipedia.org/wiki/Prime_factor#Omega_functions" target="_blank">Omega function</a>:
+<img src="http://www.lvtran.com/wp-content/uploads/2014/02/23a.png" alt="23a" width="669" height="158" class="aligncenter size-full wp-image-292" />
 &nbsp;&nbsp;&nbsp;&nbsp;&diams; For example, the sum of all factors of 120 = 2<sup>3</sup> x 3 x 5 is (1 + 2 + 2<sup>3</sup> + 2<sup>3</sup>)(1 + 3)(1 + 5) = 15 x 4 x 6 = 360.<br>
-&nbsp;&nbsp;&nbsp;&diams; To find the sum of all <a href=""http://mathworld.wolfram.com/ProperDivisor.html"" target=""_blank"">proper divisors,</a> subtract the original number <strong>n</strong> from the sum found above. Make some modification to the prime factorization in <a href=""http://lvtran.com/p12/"">Problem 12</a> to implement the Omega function.<br><br>
+&nbsp;&nbsp;&nbsp;&diams; To find the sum of all <a href="http://mathworld.wolfram.com/ProperDivisor.html" target="_blank">proper divisors,</a> subtract the original number <strong>n</strong> from the sum found above. Make some modification to the prime factorization in <a href="/euler/problems/p12/">Problem 12</a> to implement the Omega function.<br><br>
 &clubs; To determine if a number can be written as the sum of 2 abundant numbers, make a boolean array of size 28,123. Create a list of abundant number up to 28,123 using the modified prime factorization method. Then make 2 for loops: the outer loops from the first abundant number <strong>a</strong> to the last one in the list and the inner loops from <strong>a</strong> to the last one in the list. If the sum of the number from these 2 loops is less than or equal to 28,123, then that sum can be written as the sum of 2 abundant numbers. Mark this number in the boolean array. When the two loops terminate, sum up all the numbers that were not marked (i.e numbers that cannot be written as the sum of 2 abundant numbers).<p>
-<p>&clubs; Wolfram Alpha's <a href=""http://mathworld.wolfram.com/AbundantNumber.html"" target=""_blank"">article</a> on abundant numbers states that the upper bound is actually <strong>20,161</strong>, so use that as the upper bound instead of 28,123 (saving almost 8,000 iterations!)</p>
+<p>&clubs; Wolfram Alpha's <a href="http://mathworld.wolfram.com/AbundantNumber.html" target="_blank">article</a> on abundant numbers states that the upper bound is actually <strong>20,161</strong>, so use that as the upper bound instead of 28,123 (saving almost 8,000 iterations!)</p>
 
-<h2>The Code</h2>
-[java]
+<h4>The Code</h4>
+<pre class="brush: java">
 import java.util.*;
 
 public class Problem23
@@ -165,9 +166,13 @@ public class Problem23
     return list;
   }
 }
-[/java]
-[java]Execution time: 75 ms.[/java]"
-</section>
+</pre>
+
+<div class="navigation">
+            <p><a href="/euler/problems/p8">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+          </div>
+          </section>
         </section>
         <section>
           <ul>
@@ -178,6 +183,10 @@ public class Problem23
         </section>
       </div>
     </div>
+    <script src="../js/shCore.js" type="text/javascript"></script>
+    <script src="../js/shAutoloader.js" type="text/javascript"></script>
+    <script src="../js/shBrushJava.js" type="text/javascript"></script>
+    <script type="text/javascript">SyntaxHighlighter.all()</script>
     <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
   </body>
 </html>

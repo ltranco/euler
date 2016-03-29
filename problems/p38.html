@@ -6,8 +6,9 @@
     <meta name="keywords" content="Long Tran Euler"/>
     <meta name="description" content="Project Euler solved by Long Tran."/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico"/>
     <link rel="stylesheet" href="../css/main.css">
+    <link href="../css/shThemeDefault.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
@@ -64,22 +65,22 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem</h4>
-"<p>Take the number 192 and multiply it by each of 1, 2, and 3:
+            <h4>Problem : </p></h4>
+<p>Take the number 192 and multiply it by each of 1, 2, and 3:
 <br>192 x 1 = 192
 192 x 2 = 384
 192 x 3 = 576
 <br>By concatenating each product we get the 1 to 9 pandigital, 192384576. We will call 192384576 the concatenated product of 192 and (1,2,3). The same can be achieved by starting with 9 and multiplying by 1, 2, 3, 4, and 5, giving the pandigital, 918273645, which is the concatenated product of 9 and (1,2,3,4,5). 			
 <br>What is the largest 1 to 9 pandigital 9-digit number that can be formed as the concatenated product of an integer with (1,2, ... , <var>n</var>) where <var>n</var> > 1?</p>
-<!--more-->
 
 
-<h2>The Catch</h2>
-<p style=""margin-right: 30px;"">How to find the optimal range of a candidate number<strong> c</strong>, which is to be multiplied with (1, 2, ... n) where <strong>n</strong> &gt; 1 to form the concatenated-product-pandigital number.
+
+<h4>The Catch</h4>
+<p style="margin-right: 30px;">How to find the optimal range of a candidate number<strong> c</strong>, which is to be multiplied with (1, 2, ... n) where <strong>n</strong> &gt; 1 to form the concatenated-product-pandigital number.
 How to check if a number is pandigital.</p>
 
-<h2>The Light</h2>
-<p>&clubs; The desired pandigital number <strong>p</strong> has to have 9 digits from 1-9, exactly once each. A candidate number <strong>c</strong> has to be multiplied with 1 to strong>n</strong>, with <strong>n &gt; 1</strong>. The products are then concatenated to form <strong>p</strong>. Define the notation <strong>(a)(b)</strong> to be ""<strong>a</strong> concatenates<strong> b</strong>"", or <strong>ab</strong>. To find the range of <strong>c</strong>, observe:
+<h4>The Light</h4>
+<p>&clubs; The desired pandigital number <strong>p</strong> has to have 9 digits from 1-9, exactly once each. A candidate number <strong>c</strong> has to be multiplied with 1 to strong>n</strong>, with <strong>n &gt; 1</strong>. The products are then concatenated to form <strong>p</strong>. Define the notation <strong>(a)(b)</strong> to be "<strong>a</strong> concatenates<strong> b</strong>", or <strong>ab</strong>. To find the range of <strong>c</strong>, observe:
 <br>&diams; <strong>c</strong> has to have less than 5 digits because the smallest 5-digit number is 10,000 and the smallest possible value for <strong>n</strong> is 2 (n &gt; 1). This gives (10,000 * 1)(10,000 * 2) = 1,000,020,000, which has 10 digits and thus does not satisfy the 9-digit condition. Thus <strong>c</strong> &lt; 10,000.
 &diams; We were given to start with 9, so <strong>c</strong> has to start with 9. Thus 9 &lt;=<strong> c</strong> &lt; 9,999.
 &diams; If<strong> c</strong> has 2 digits, its lowest value is 90. Assume <strong>n = 2</strong> (lowest possible value), (90 * 1)(90 * 2) = 90,180, which does not satisfy the 9-digit condition. <strong>n = 3</strong> gives 90,180,270 and <strong>n = 4</strong> gives 90,180,270,360, both of which do not satisfy the 9-digit condition. Thus 90 &lt;= <strong>c</strong> &lt; 9,999.
@@ -87,19 +88,19 @@ How to check if a number is pandigital.</p>
 &diams; If <strong>c</strong> has 4 digits, its lowest value is 9,000. Assume <strong>n = 2</strong> (lowest possible value), (9,000 * 1)(9,000 * 2) = 900,018,000, which SATISFIES the 9-digit condition. <strong>n = 3</strong> gives 90,001,800,027,000 violates the 9-digit condition, thus any <strong>n &gt; 2</strong> will not work.
 &diams; Range for candidate <strong>c</strong> is <strong>9,000 &lt;= c &lt; 9,999</strong> and <strong>n</strong> can only be 2.
 <p>&clubs; Since we're looking for the largest instance, start with the greatest possible <strong>c</strong> candidate and decrement downward.</p>
-<p>&clubs; Follow the discussion in <a href=""p41.html"">Problem 41</a> to check if a number is pandigital.</p>
+<p>&clubs; Follow the discussion in <a href="p41.html">Problem 41</a> to check if a number is pandigital.</p>
 
-<h2>The Code</h2>
-[java]
+<h4>The Code</h4>
+<pre class="brush: java">
 import java.util.Arrays;
 
 public class Problem38
 {
-  public static char[][] p = {""1"".toCharArray(), ""12"".toCharArray(), 
-                              ""123"".toCharArray(), ""1234"".toCharArray(),
-                              ""12345"".toCharArray(), ""123456"".toCharArray(), 
-                              ""1234567"".toCharArray(), ""12345678"".toCharArray(), 
-                              ""123456789"".toCharArray()};
+  public static char[][] p = {"1".toCharArray(), "12".toCharArray(), 
+                              "123".toCharArray(), "1234".toCharArray(),
+                              "12345".toCharArray(), "123456".toCharArray(), 
+                              "1234567".toCharArray(), "12345678".toCharArray(), 
+                              "123456789".toCharArray()};
 
   public static void main(String[] args)
   {
@@ -122,9 +123,13 @@ public class Problem38
     return (Arrays.equals(c, p[c.length - 1]));	
   }
 } 
-[/java]
-[java]Execution time: 3 ms.[/java]"
-</section>
+</pre>
+
+<div class="navigation">
+            <p><a href="/euler/problems/p8">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+          </div>
+          </section>
         </section>
         <section>
           <ul>
@@ -135,6 +140,10 @@ public class Problem38
         </section>
       </div>
     </div>
+    <script src="../js/shCore.js" type="text/javascript"></script>
+    <script src="../js/shAutoloader.js" type="text/javascript"></script>
+    <script src="../js/shBrushJava.js" type="text/javascript"></script>
+    <script type="text/javascript">SyntaxHighlighter.all()</script>
     <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
   </body>
 </html>

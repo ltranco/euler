@@ -1,0 +1,1 @@
+grep -ilr 'http://lvtran.com' *.html | xargs -I@ sed -i '' 's/http:\/\/lvtran\.com/\/euler\/problems/g' @

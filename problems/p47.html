@@ -6,8 +6,9 @@
     <meta name="keywords" content="Long Tran Euler"/>
     <meta name="description" content="Project Euler solved by Long Tran."/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico"/>
     <link rel="stylesheet" href="../css/main.css">
+    <link href="../css/shThemeDefault.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
@@ -64,8 +65,8 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem</h4>
-"<p style=""margin-right: 30px;"">The first two consecutive numbers to have two distinct prime factors are:
+            <h4>Problem : </p></h4>
+"<p style="margin-right: 30px;">The first two consecutive numbers to have two distinct prime factors are:
 14 = 2 x 7
 15 = 3 x 5
 
@@ -74,15 +75,15 @@
 645 = 3 x 5 x 43
 646 = 2 x 17 x 19.
 
-<p>Find the first four consecutive integers to have four distinct prime factors. What is the first of these numbers?</p><!--more-->
+<p>Find the first four consecutive integers to have four distinct prime factors. What is the first of these numbers?</p>
 
 
 
-<h2>The Catch</h2>
+<h4>The Catch</h4>
 <p>How to find the number of distinct prime factors.</p>
 
-<h2>The Light</h2>
-<p>&clubs; If we use prime factorization as discussed in <a href=""http://lvtran.com/p3/"">Problem 3</a> to find a number's prime factors. Count repeated prime factors once only. This traditional prime factorization algorithm is, however, not as efficient when dealing with large number.
+<h4>The Light</h4>
+<p>&clubs; If we use prime factorization as discussed in <a href="/euler/problems/p3/">Problem 3</a> to find a number's prime factors. Count repeated prime factors once only. This traditional prime factorization algorithm is, however, not as efficient when dealing with large number.
 
 <br>Prime factorize 812:
 812 / 2 = 406
@@ -99,10 +100,10 @@
 
 <p>There is a series of primes numbers that are being checked unnecessarily after 7. For even larger numbers, this series of skipped primes will greatly slow down the execution time. 
 <br>It is important to notice that after 7, there is only 1 prime factor left. Also notice that this last prime factor is greater than sqrt(812) = 28.4956. This is due to the fact that for any given 			integer n, there is only 1 prime factor that is greater than &radic;n. Use this fact to eliminate all unncessary checks.
-<p style=""margin-right: 30px;"">&clubs; To prime factorize, you will need a list of precalculated 			prime numbers, which can be achieved using the <a href=""http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes""> Sieve of Eratosthenes			</a> as discussed in <a href=""http://lvtran.com/p35/"">Problem 35</p>
+<p style="margin-right: 30px;">&clubs; To prime factorize, you will need a list of precalculated 			prime numbers, which can be achieved using the <a href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes"> Sieve of Eratosthenes			</a> as discussed in <a href="/euler/problems/p35/">Problem 35</p>
 
-<h2>The Code</h2>
-[java]
+<h4>The Code</h4>
+<pre class="brush: java">
 import java.util.*;
 
 public class Problem47
@@ -172,9 +173,13 @@ public class Problem47
     return list;
   }
 }
-[/java]
-[java]Execution time: 89 ms.[/java]"
-</section>
+</pre>
+
+<div class="navigation">
+            <p><a href="/euler/problems/p8">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+          </div>
+          </section>
         </section>
         <section>
           <ul>
@@ -185,6 +190,10 @@ public class Problem47
         </section>
       </div>
     </div>
+    <script src="../js/shCore.js" type="text/javascript"></script>
+    <script src="../js/shAutoloader.js" type="text/javascript"></script>
+    <script src="../js/shBrushJava.js" type="text/javascript"></script>
+    <script type="text/javascript">SyntaxHighlighter.all()</script>
     <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
   </body>
 </html>

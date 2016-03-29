@@ -65,59 +65,56 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem 10: Summation of Primes</p></h4>
-            <p>The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17. Find the sum of all the primes below two million.</p>
-
+            <h4>Problem 15: Lattice Paths</h4>
+            <p>Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down, there are exactly 6 routes to the bottom right corner. How many such routes are there through a 20×20 grid?</p>
+            <img width="208" height="151" src="../img/p015.gif"/>
             <h4>The Catch</h4>
-            <p>How to efficiently generate a list of prime below a given upper bound.</p>
+            <p>Discover the pattern of lattice paths.</p><br><br>
 
             <h4>The Light</h4>
-            <p>Including the first prime number, 2, in a sum variable, we can loop from 3 to 2,000,000 and reuse the prime checking code in <a href="/euler/problems/p3">Problem 3</a> and increment for every odd number. The sum will probably get too large for a type <code>int</code> variable to hold, causing a <a href="http://stackoverflow.com/questions/3001836/how-does-java-handle-integer-underflows-and-overflows-and-how-would-you-check-fo" target="_blank"> number overflow error</a>. Use a type <code>long</code> variable to solve this issue. This approach, however, requires approximately 1,000,000 iterations and takes as long as half a second to execute, which is not very efficient.<br></p>
-            <p><br>The <a href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes" target="_blank"> Sieve of Eratosthenes</a> discussed in <a href="/euler/problems/p35" target="_blank">Problem 35</a> will yield a much better result.</p>
+            <p>Take a look at a smaller version of this problem:
+            <img src="../img/15a.png" alt="15a" width="218" height="213"/>
+            <p>If you start from the green point, there is only one way (marked as 1 next to the green point) to get to the destination D. Similarly, if you start from the blue point, there is also only one          way to get to the destination. Now, let's move the positions of the green and blue points:</p>
+            <img src="../img/15b.png" alt="15b" width="206" height="188"/>
+            <img src="../img/15c.png" alt="15c" width="212" height="192"/>
+            <p>It can be seen that no matter where you start on the <strong>bottom and right edge</strong>, there is only one way to reach the destination. Now, observe the following square. If you start from the yellow point, there are 2 ways to reach the destination.</p>
+            <img src="../img/15d.png" alt="15d" width="195" height="206"/>
+            <p>Similarly in the square below, if you start from the purple or gray point, there are 3 ways to reach the destination. If you start from the orange point, there will be 6 ways. Notice that this is the  2 x 2 square mentioned in the problem's example.
+            <img src="../img/15e.png" alt="15e" width="188" height="189"/>
+            <br><p>The number of lattice paths from any point can be computed by adding the number of lattice paths from the point immediately to the right and below it. For instance, the number of lattice paths of the yellow point can be computed by adding the number of lattice paths of the green point immediately to the right and the blue point immediately below, so we have 1 + 1 = 2. Similarly, the number of lattice paths of the gray point can be computed by adding the number of lattice paths of the yellow point immediately to the right and the number of lattice paths of the blue point immediately below, so we have 2 + 1 = 3. The same method is used to compute 6, the number of lattice paths of the orange point, which is the top left corner point of a 2 x 2 square.</p>
+            <p><br>Apply this pattern for a 20 x 20 square. Use type <code>long</code> to store your answer as the combinatorial value will get very large.</p>
 
             <h4>The Code</h4>
-            <pre class="brush: java">import java.util.*;
-
-public class Problem10
+            <pre class="brush: java">public class Problem15
 {
   public static void main(String[] args)
   {
-    long sum = 0;
-    List primeList = generatePrimes(2000000);        
-
-    for(int i = 0; i &lt; primeList.size(); i++)
+    int gridsize = 20;
+    long[][] grid = new long[gridsize + 1][gridsize + 1];
+    for( int x = 0; x &lt; gridsize + 1; x++ )
     {
-      sum += primeList.get(i);
+      for( int y = 0; y &lt; gridsize + 1; y++ )       
+      {
+        grid[gridsize][y] = 1;      
+        grid[x][gridsize] = 1;       
+      }
     }
-    System.out.println(sum); 
-  }
 
-  public static List generatePrimes(int max) 
-  {
-    boolean[] isComposite = new boolean[max + 1];
-    for (int i = 2; i * i &lt;= max; i++) 
+    for( int x = gridsize - 1; x &gt;= 0; x-- )
     {
-      if (!isComposite [i]) 
-        for (int j = i; i * j &lt;= max; j++) 
-        {
-          isComposite [i*j] = true;
-        }
-    }   
-    ArrayList list = new ArrayList();
-
-    for (int i = 2; i &lt;= max; i++)  
-    {
-      if (!isComposite [i]) 
-        list.add(new Integer(i));
+      for( int y = gridsize  - 1; y &gt;= 0; y-- )
+      {
+        grid[x][y] = grid[x + 1][ y] + grid[x][ y + 1];
+      }
     }
-    return list;
+
+    System.out.println("Top left grid = " + grid[0][0]);
   }
 }
 </pre>
-
-<div class="navigation">
-            <p><a href="/euler/problems/p9">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p11">Next &rarr;</a></p>
+        <div class="navigation">
+            <p><a href="/euler/problems/p14">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p16">Next &rarr;</a></p>
           </div>
           </section>
         </section>

@@ -6,8 +6,9 @@
     <meta name="keywords" content="Long Tran Euler"/>
     <meta name="description" content="Project Euler solved by Long Tran."/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico"/>
     <link rel="stylesheet" href="../css/main.css">
+    <link href="../css/shThemeDefault.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
@@ -64,20 +65,20 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem</h4>
-"<p>The series, 1<sup>1</sup> + 2<sup>2</sup> + 3<sup>3</sup> + ... + 10<sup>10</sup> = 10405071317.
-<br>Find the  last ten digits of the series, 1<sup>1</sup> + 2<sup>2</sup> + 3<sup>3</sup> + ... + 1000<sup>1000</sup>.</p><!--more-->
+            <h4>Problem : </p></h4>
+<p>The series, 1<sup>1</sup> + 2<sup>2</sup> + 3<sup>3</sup> + ... + 10<sup>10</sup> = 10405071317.
+<br>Find the  last ten digits of the series, 1<sup>1</sup> + 2<sup>2</sup> + 3<sup>3</sup> + ... + 1000<sup>1000</sup>.</p>
 
 
 
-<h2>The Catch</h2>
+<h4>The Catch</h4>
 <p>How to store and quickly calculate extremely large numbers.</p><br><br>
 
-<h2>The Light</h2>
-<p>Use Java's <a href=""http://docs.oracle.com/javase/1.4.2/docs/api/java/math/BigInteger.html"" target=""_blank"">BigInteger</a> class.</p>
+<h4>The Light</h4>
+<p>Use Java's <a href="http://docs.oracle.com/javase/1.4.2/docs/api/java/math/BigInteger.html" target="_blank">BigInteger</a> class.</p>
 
-<h2>The Code</h2>
-[java]
+<h4>The Code</h4>
+<pre class="brush: java">
 import java.math.BigInteger;
 
 public class Problem48
@@ -88,7 +89,7 @@ public class Problem48
     BigInteger i = BigInteger.ONE;
     BigInteger index = BigInteger.ONE;
     BigInteger one = BigInteger.ONE;
-    BigInteger limit = new BigInteger(""1001"");
+    BigInteger limit = new BigInteger("1001");
     int exp = 1;
 
     for(; index.compareTo(limit) == -1; index = index.add(one))
@@ -99,12 +100,16 @@ public class Problem48
     }
     String s = result.toString();
     s = s.substring(s.length() - 10, s.length());
-    System.out.println(""Last 10 digits are "" + s);
+    System.out.println("Last 10 digits are " + s);
  }
 }
-[/java]
-[java]Execution time: 66 ms.[/java]"
-</section>
+</pre>
+
+<div class="navigation">
+            <p><a href="/euler/problems/p8">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+          </div>
+          </section>
         </section>
         <section>
           <ul>
@@ -115,6 +120,10 @@ public class Problem48
         </section>
       </div>
     </div>
+    <script src="../js/shCore.js" type="text/javascript"></script>
+    <script src="../js/shAutoloader.js" type="text/javascript"></script>
+    <script src="../js/shBrushJava.js" type="text/javascript"></script>
+    <script type="text/javascript">SyntaxHighlighter.all()</script>
     <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-48211346-1', 'auto');ga('send', 'pageview');</script>
   </body>
 </html>
