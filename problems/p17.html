@@ -65,21 +65,22 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem : </p></h4>
-<p>If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total. If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?
+            <h4>Problem 17: Number Letter Counts</h4>
+            <p>If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total. If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?
 
+            <br><b>NOTE:</b> Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. The use of "and" when writing out numbers is in compliance with British usage.</p>
 
-<br><b>NOTE:</b> Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. The use of "and" when writing out numbers is in compliance with British usage.</p>
+            <h4>The Catch</h4>
+            <p>How to efficiently calculate the number of letters of 1,000 numbers when they are spelled out.</p>
 
-<h4>The Catch</h4>
-<p>How to efficiently calculate the number of letters of 1,000 numbers when they are spelled out.</p>
-
-<h4>The Light</h4>
-<p>The number Divide 1,000 numbers into groups based on the similarity of their spellings:
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; 1 - 20
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; 21 - 99
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; 100 - 999
-Reuse the result of previous groups on the latter groups. For example, 128 (one hundred twenty eight) can use 1 (one) from the first group and 28 (twenty eight) from the second group.</p>
+            <h4>The Light</h4>
+            <p>The number Divide 1,000 numbers into groups based on the similarity of their spellings:
+            <ul class="circle-ul">
+              <li>1 - 20</li>
+              <li>21 - 99</li>
+              <li>100 - 999</li>
+            </ul>
+            <p><br>Reuse the result of previous groups on the latter groups. For example, 128 (one hundred twenty eight) can use 1 (one) from the first group and 28 (twenty eight) from the second group.</p>
 
 <h4>The Code</h4>
 <pre class="brush: java">
@@ -243,11 +244,9 @@ public class Problem17
   }
 }
 </pre>
-<pre class="brush: java">Execution time: 3 ms.</pre>
-"
-<div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+          <div class="navigation">
+            <p><a href="/euler/problems/p16">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p18">Next &rarr;</a></p>
           </div>
           </section>
         </section>

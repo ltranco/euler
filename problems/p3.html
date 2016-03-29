@@ -93,9 +93,7 @@
             </p>
 
             <p><br>Determine primeness: Recall that a <a href="http://en.wikipedia.org/wiki/Prime_number" target="_blank">prime number</a> is a natural number greater than 1 that has no positive divisors other than 1 and itself. Prime numbers are always odd with the exception of 2, the smallest prime number. So the first criteria for a number x to be prime is x needs to be an odd, natural number that is greater than 2. We then have to check all of its factors up to the square root of x. The reason for this is for every factor a of x that is less than or equal to sqrt(x), there is a corresponding factor b of x that is greater than sqrt(x) such that a * b = x, thus checking for b is redundant.
-              <br>
-            <img src="../img/pdigit.jpg" width="500" height="375"/>
-
+              
             <p><br>Example: Is 17 a prime number? 17 is obviously an odd number. If 17 has any more factors other than 1 and itself, then it is not prime. Prime factorize 17 to find its factors: 17 is not divisible by 2, 3, 5, 7, 11, and 13, thus 2, 3, 5, 7, 11, and 13 are not its factors. So 17's only factors are 1 and 17, making 17 prime. In fact, we can stop prime factorizing at sqrt(17), or 4.123 because if 17 is not divisible by any number a with 1 &lt; a &lt;= 4.123, then 17 will not be divisible by any number b with 4.123 &lt; b &lt; 17.</p>
             <p><br>To store the number 600,851,475,143, use primitive type <code>long</code>, whose maximum value is 9,223,372,036,854,775,807.</p>
             <h4>The Code</h4>

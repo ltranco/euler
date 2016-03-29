@@ -65,123 +65,120 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem : </p></h4>
-<p>You are given the following information, but you may prefer to do some research for yourself.
-<div align="center"><p>
-			1 Jan 1900 was a Monday.<br>
-			Thirty days has September,<br>
-			April, June and November.<br>
-			All the rest have thirty-one,<br>
-			Saving February alone,<br>
-			Which has twenty-eight, rain or shine.<br>
-			And on leap years, twenty-nine.<br>
-			A leap year occurs on any year evenly divisible by 4, but not on a 
-			century unless it is divisible by 400.
-</div>
-<p>How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</p>
-
-
-
-<h4>The Catch</h4>
-<p>How to determine what day of a week any given date is.</p>
-
-<h4>The Light</h4>
-<p>There are plenty of methods to determine the day of week: from the <a href="http://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Gauss.27s_algorithm" target="_blank">Gauss's algorithm</a> to the <a href="http://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Schwerdtfeger.27s_variation" target="_blank">Schwerdtfeger's variation</a>, but there is also a simpler method. Given any date mm/dd/yyyy:
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Refer to the Month-Offset Table below to find the offset value of mm.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Define <strong>a = ((value found in step 1) + dd) % 7</strong>.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Define <strong>b = (the last 2 digits of yyyy) % 28</strong>.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Define <strong>c = b + b/4</strong>. Drop all the decimal (similar to (int) c).<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Refer to the Century-Offset Table below to find the offset value of yyyy.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Add <strong>c</strong> to the value in step 5. If mm is Jan or Feb AND yyyy is a leap year, then subtract 1.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Define <strong>d = (a + c) % 7</strong>. Look for d in the Day of the Week Table below to determine the &nbsp;&nbsp;&nbsp;&nbsp;day of the week.<br>
-			
-<div align="center">
-Month- Offset Table
-<table align="center" border="1">
-<tbody>
-<tr>
-			<td align="center">Jan</td>
-			<td align="center">Feb</td>
-			<td align="center">Mar</td>
-			<td align="center">Apr</td>
-			<td align="center">May</td>
-			<td align="center">Jun</td>
-			<td align="center">Jul</td>
-			<td align="center">Aug</td>
-			<td align="center">Sep</td>
-			<td align="center">Oct</td>
-			<td align="center">Nov</td>
-			<td align="center">Dec</td>
-			</tr>
-			<tr>
-			<td align="center">0</td>
-			<td align="center">3</td>
-			<td align="center">3</td>
-			<td align="center">6</td>
-			<td align="center">1</td>
-			<td align="center">4</td>
-			<td align="center">6</td>
-			<td align="center">2</td>
-			<td align="center">5</td>
-			<td align="center">0</td>
-			<td align="center">3</td>
-			<td align="center">5</td>
-			</tr>
-			</tbody>
-			</table>
-			Century-Offset Table
-			<table align="center" border="1">
-			<tbody>
-			<tr>
-			<td align="center">1600's</td>
-			<td align="center">1700's</td>
-			<td align="center">1800's</td>
-			<td align="center">1900's</td>
-			<td align="center">2000's</td>
-			</tr>
-			<tr>
-			<td align="center">0</td>
-			<td align="center">5</td>
-			<td align="center">3</td>
-			<td align="center">1</td>
-			<td align="center">0</td>
-			</tr>
-			</tbody>
-			</table>
-			Day of the Week Table
-			<table align="center" border="1">
-			<tbody>
-			<tr>
-			<td align="center">Sun</td>
-			<td align="center">Mon</td>
-			<td align="center">Tue</td>
-			<td align="center">Wed</td>
-			<td align="center">Thu</td>
-			<td align="center">Fri</td>
-			<td align="center">Sat</td>
-			</tr>
-			<tr>
-			<td align="center">1</td>
-			<td align="center">2</td>
-			<td align="center">3</td>
-			<td align="center">4</td>
-			<td align="center">5</td>
-			<td align="center">6</td>
-			<td align="center">7 or 0</td>
-			</tr>
-			</tbody>
-			</table></div>
-			<br><p>Example: December 8th, 1994.
-				a = (5 + 8) % 7 = 6
-				b = 94 % 28 = 10
-				c = 10 + 10/4 = 12.5 = 12
-				c = 1 + c = 1 + 12 = 13
-				d = (6 + 13) % 7 = 5, which is a Thursday.
-		
-This approach is straightforward and simple to implement, but... why not just let Java do the labor: utilize the <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Calendar.html" target="_blank">Calendar</a> class.</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
+            <h4>Problem 19: Counting Sundays</p></h4>
+            <p>You are given the following information, but you may prefer to do some research for yourself.<br>
+              1 Jan 1900 was a Monday.<br>
+              Thirty days has September,<br>
+              April, June and November.<br>
+              All the rest have thirty-one,<br>
+              Saving February alone,<br>
+              Which has twenty-eight, rain or shine.<br>
+              And on leap years, twenty-nine.<br>
+              A leap year occurs on any year evenly divisible by 4, but not on a 
+              century unless it is divisible by 400.<br>
+              How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
+            </p>
+            <h4>The Catch</h4>
+            <p>How to determine what day of a week any given date is.</p>
+            <h4>The Light</h4>
+            <p>There are plenty of methods to determine the day of week: from the <a href="http://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Gauss.27s_algorithm" target="_blank">Gauss's algorithm</a> to the <a href="http://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Schwerdtfeger.27s_variation" target="_blank">Schwerdtfeger's variation</a>, but there is also a simpler method. Given any date mm/dd/yyyy:
+            <ul class="circle-ul">
+              <li>Refer to the Month-Offset Table below to find the offset value of mm.</li>
+              <li>Define <strong>a = ((value found in step 1) + dd) % 7</strong>.</li>
+              <li>Define <strong>b = (the last 2 digits of yyyy) % 28</strong>.</li>
+              <li>Define <strong>c = b + b/4</strong>. Drop all the decimal (similar to (int) c).</li>
+              <li>Refer to the Century-Offset Table below to find the offset value of yyyy.</li>
+              <li>Add <strong>c</strong> to the value in step 5. If mm is Jan or Feb AND yyyy is a leap year, then subtract 1.</li>
+              <li>Define <strong>d = (a + c) % 7</strong>. Look for d in the Day of the Week Table below to determine the day of the week.</li>
+            </ul>
+            <div align="center">
+              <p>Month- Offset Table</p>
+              <table align="center" class="problem19">
+                <tbody>
+                  <tr>
+                    <td>Jan</td>
+                    <td>Feb</td>
+                    <td>Mar</td>
+                    <td>Apr</td>
+                    <td>May</td>
+                    <td>Jun</td>
+                    <td>Jul</td>
+                    <td>Aug</td>
+                    <td>Sep</td>
+                    <td>Oct</td>
+                    <td>Nov</td>
+                    <td>Dec</td>
+                  </tr>
+                  <tr>
+                    <td>0</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>6</td>
+                    <td>1</td>
+                    <td>4</td>
+                    <td>6</td>
+                    <td>2</td>
+                    <td>5</td>
+                    <td>0</td>
+                    <td>3</td>
+                    <td>5</td>
+                  </tr>
+                </tbody>
+              </table>
+              <br><br><p>Century-Offset Table</p>
+              <table align="center" class="problem19">
+                <tbody>
+                  <tr>
+                    <td>1600's</td>
+                    <td>1700's</td>
+                    <td>1800's</td>
+                    <td>1900's</td>
+                    <td>2000's</td>
+                  </tr>
+                  <tr>
+                    <td>0</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>0</td>
+                  </tr>
+                </tbody>
+              </table>
+              <br><br><p>Day of the Week Table</p>
+              <table align="center" class="problem19">
+                <tbody>
+                  <tr>
+                    <td>Sun</td>
+                    <td>Mon</td>
+                    <td>Tue</td>
+                    <td>Wed</td>
+                    <td>Thu</td>
+                    <td>Fri</td>
+                    <td>Sat</td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7 or 0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <p>Example: December 8th, 1994.
+              <br>a = (5 + 8) % 7 = 6
+              <br>b = 94 % 28 = 10
+              <br>c = 10 + 10/4 = 12.5 = 12
+              <br>c = 1 + c = 1 + 12 = 13
+              <br>d = (6 + 13) % 7 = 5, which is a Thursday.
+              <br>This approach is straightforward and simple to implement, but... why not just let Java do the labor: utilize the <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Calendar.html" target="_blank">Calendar</a> class.
+            </p>
+            <h4>The Code</h4>
+            <pre class="brush: java">
 import java.util.*;
 
 public class Problem19
@@ -205,11 +202,10 @@ public class Problem19
   }
 }
 </pre>
-
-<div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
-          </div>
+            <div class="navigation">
+              <p><a href="/euler/problems/p18">&larr; Back</a></p>
+              <p class="float-right"><a href="/euler/problems/p20">Next &rarr;</a></p>
+            </div>
           </section>
         </section>
         <section>

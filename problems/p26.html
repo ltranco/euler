@@ -65,41 +65,40 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem : </p></h4>
-<p>A unit fraction contains 1 in the numerator. The decimal representation of the unit fractions with denominators 2 to 10 are given:
-1/2 = 0.5
-1/3 = 0.(3)
-1/4 = 0.25
-1/5 = 0.2
-1/6 = 0.1(6)
-1/7 = 0.(142857)
-1/8 = 0.125
-1/9 = 0.(1)
-1/10 = 0.1
-<br>Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be seen that <sup>1</sup>/<sub>7</sub> has a 6-digit recurring cycle. Find the value of <i>d</i> < 1000 for which <sup>1</sup>/<sub><i>d</i></sub> contains the longest recurring cycle in its decimal fraction part.</p>
+            <h4>Problem 26: Reciprocal Cycles</p></h4>
+            <p>A unit fraction contains 1 in the numerator. The decimal representation of the unit fractions with denominators 2 to 10 are given:
+              <br>1/2 = 0.5
+              <br>1/3 = 0.(3)
+              <br>1/4 = 0.25
+              <br>1/5 = 0.2
+              <br>1/6 = 0.1(6)
+              <br>1/7 = 0.(142857)
+              <br>1/8 = 0.125
+              <br>1/9 = 0.(1)
+              <br>1/10 = 0.1
+              <br>Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be seen that <sup>1</sup>/<sub>7</sub> has a 6-digit recurring cycle. Find the value of <i>d</i>&lt;1000 for which <sup>1</sup>/<sub><i>d</i></sub> contains the longest recurring cycle in its decimal fraction part.
+            </p>
 
+            <h4>The Catch</h4>
+            <p>How to find the length of a recurring cycle of <sup>1</sup>/<sub><i>d</i></sub></p>
 
+            <h4>The Light</h4>
+            <p>Use an algorithm which uses modulus operation to find the length of a recurring cycle:</p>
+            <ul class="circle-ul">
+              <li>Take the modulus 1 % d. Call the result x.</li>
+              <li>Times x by 10.</li>
+              <li>Take the modulus x % d.</li>
+              <li>Keep track of all found values for x.</li>
+              <li>Repeat step 2 - 3 until x repeats again or x = 0.</li>
+            </ul>
+            <p><br>For example, to find the recurring cycle length of 1/8:
+            <br>1 % 8 = 1
+            <br>10 % 8 = 2
+            <br>20 % 8 = 4
+            <br>40 % 8 = 0 (Stop the algorithm here; 1/8 has a recurring cycle length of 3)</p>
 
-<h4>The Catch</h4>
-<p>How to find the length of a recurring cycle of <sup>1</sup>/<sub><i>d</i></sub></p>
-
-<h4>The Light</h4>
-<p>An algorithm which uses modulus operation to find the length of a recurring cycle:
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Take the modulus 1 % d. Call the result x.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Times x by 10.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Take the modulus x % d.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Keep track of all found values for x.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Repeat step 2 - 3 until x repeats again or x = 0.
-<br>For example, to find the recurring cycle length of 1/8:
-&nbsp;&nbsp;&nbsp;&nbsp;1 % 8 = 1
-&nbsp;&nbsp;&nbsp;&nbsp;10 % 8 = 2
-&nbsp;&nbsp;&nbsp;&nbsp;20 % 8 = 4
-&nbsp;&nbsp;&nbsp;&nbsp;40 % 8 = 0 (Stop the algorithm here; 1/8 has a recurring cycle length of 3)
-</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-import java.util.*;
+            <h4>The Code</h4>
+            <pre class="brush: java">import java.util.*;
 
 public class Problem26
 {
@@ -141,11 +140,9 @@ public class Problem26
   }
 }
 </pre>
-<pre class="brush: java">Execution time: 175 ms.</pre>
-"
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p25">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p27">Next &rarr;</a></p>
           </div>
           </section>
         </section>

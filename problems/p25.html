@@ -65,36 +65,35 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem : </p></h4>
-<p>The Fibonacci sequence is defined by the recurrence relation: 
-F<sub><i>n</i></sub> = F<sub><i>n</i> - 1</sub> + F<sub><i>n</i> - 2</sub>, where F<sub>1</sub> = 1 and F<sub>2</sub> = 1. Hence the first 12 terms will be:<br>
-F<sub>1</sub> = 1<br>
-F<sub>2</sub> = 1<br>
-F<sub>3</sub> = 2<br>
-F<sub>4</sub> = 3<br>
-F<sub>5</sub> = 5<br>
-F<sub>6</sub> = 8<br>
-F<sub>7</sub> = 13<br>
-F<sub>8</sub> = 21<br>
-F<sub>9</sub> = 34<br>
-F<sub>10</sub> = 55<br>
-F<sub>11</sub> = 89<br>
-F<sub>12</sub> = 144<br>
-The 12th term, F<sub>12</sub>, is the first term to contain three digits. What is the first term in the Fibonacci sequence to contain 1000 digits?</p>
+            <h4>Problem 25: 1000-digit Fibonacci Number</p></h4>
+              <p>The Fibonacci sequence is defined by the recurrence relation: 
+                  F<sub><i>n</i></sub> = F<sub><i>n</i> - 1</sub> + F<sub><i>n</i> - 2</sub>, where F<sub>1</sub> = 1 and F<sub>2</sub> = 1. Hence the first 12 terms will be:<br>
+                  F<sub>1</sub> = 1<br>
+                  F<sub>2</sub> = 1<br>
+                  F<sub>3</sub> = 2<br>
+                  F<sub>4</sub> = 3<br>
+                  F<sub>5</sub> = 5<br>
+                  F<sub>6</sub> = 8<br>
+                  F<sub>7</sub> = 13<br>
+                  F<sub>8</sub> = 21<br>
+                  F<sub>9</sub> = 34<br>
+                  F<sub>10</sub> = 55<br>
+                  F<sub>11</sub> = 89<br>
+                  F<sub>12</sub> = 144<br>
+                  The 12th term, F<sub>12</sub>, is the first term to contain three digits. What is the first term in the Fibonacci sequence to contain 1000 digits?
+              </p>
 
+              <h4>The Catch</h4>
+              <p>How to efficiently generate 1,000-digit Fibonacci sequence.</p>
 
-<h4>The Catch</h4>
-<p>How to efficiently generate 1,000-digit Fibonacci sequence.</p>
+              <h4>The Light</h4>
+              <p>Of course we can use Java's <a href="http://docs.oracle.com/javase/6/docs/api/java/math/BigInteger.html" target="_blank">BigInteger</a> class and iteratively generate the Fibonacci sequence until the first instance of a 1,000-digit term appears. However, such an approach might take a few hundred milliseconds.<br>
+              <br>The <a href="http://mathworld.wolfram.com/FibonacciNumber.html" target="_blank">article on Fibonacci Number</a> from Wolfram Alpha offers the <a href="http://en.wikipedia.org/wiki/Jacques_Philippe_Marie_Binet" target="_blank">Binet's Fibonacci Formula</a>, which offers a closed form formula for generating the Fibonacci sequence:			
+              <a><img src="../img/25.png" alt="25" width="655" height="430" class="aligncenter size-full wp-image-300" /></a>
+              Thus, finding n would give the index of the first Fibonacci number that has 1,000 digits.
 
-<h4>The Light</h4>
-<p>&clubs; Of course we can use Java's <a href="http://docs.oracle.com/javase/6/docs/api/java/math/BigInteger.html" target="_blank">BigInteger</a> class and iteratively generate the Fibonacci sequence until the first instance of a 1,000-digit term appears. However, such approach might take a few hundred milliseconds.<br>
-<br>&clubs; The <a href="http://mathworld.wolfram.com/FibonacciNumber.html" target="_blank">article on Fibonacci Number</a> from Wolfram Alpha offers the <a href="http://en.wikipedia.org/wiki/Jacques_Philippe_Marie_Binet" target="_blank">Binet's Fibonacci Formula</a>, which offers a closed form formula for generating the Fibonacci sequence:			
-<a><img src="http://www.lvtran.com/wp-content/uploads/2014/02/25.png" alt="25" width="655" height="430" class="aligncenter size-full wp-image-300" /></a>
-Thus, finding n would give the index of the first Fibonacci number that has 1,000 digits.
-
-<h4>The Code</h4>
-<pre class="brush: java">
-public class Problem25
+              <h4>The Code</h4>
+              <pre class="brush: java">public class Problem25
 {
   public static void main(String[] args)
   {
@@ -104,8 +103,8 @@ public class Problem25
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p23">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p26">Next &rarr;</a></p>
           </div>
           </section>
         </section>

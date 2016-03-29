@@ -65,23 +65,19 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem : </p></h4>
-<p>n! means n x (n - 1) x ... x 3 x 2 x 1
-For example, 10! = 10 x 9 x ... x 3 x 2 x 1 = 3628800, and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.Find the sum of the digits in the number 100!</p>
+            <h4>Problem 20: Factorial Digit Sum</p></h4>
+            <p>n! means n x (n - 1) x ... x 3 x 2 x 1. <br>For example, 10! = 10 x 9 x ... x 3 x 2 x 1 = 3628800, and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27. Find the sum of the digits in the number 100!</p>
 
+            <h4>The Catch</h4>
+            <p>How to efficiently calculate factorial.
+            <br>How to store an extremely large number.</p>
 
+            <h4>The Light</h4>
+            <p>Factorial calculation is much more efficient using the iterative approach as opposed to the recursive one. To find <strong>x!</strong>, keep multiplying <strong>x</strong> by <strong>x - 1</strong> every time until <strong>x</strong> reaches <strong>1</strong>. That way, the factorial-finding loop is nothing but a sequence of simple multiplication, which is what computer is very good at.
+            <br><br>Use Java's <a href="http://docs.oracle.com/javase/1.4.2/docs/api/java/math/BigInteger.html" target="_blank">BigInteger</a> class. Then parse the result into an array of digit-character to calculate their sum.</p>
 
-<h4>The Catch</h4>
-<p>How to efficiently calculate factorial.
-How to store an extremely large number.</p>
-
-<h4>The Light</h4>
-<p>&clubs; Factorial calculation is much more efficient using the iterative approach as opposed to the recursive one. To find <strong>x!</strong>, keep multiplying <strong>x</strong> by <strong>x - 1</strong> every time until <strong>x</strong> reaches <strong>1</strong>. That way, the factorial-finding loop is nothing but a sequence of simple multiplication, which is what computer is very good at.
-<br>&clubs; Use Java's <a href="http://docs.oracle.com/javase/1.4.2/docs/api/java/math/BigInteger.html" target="_blank">BigInteger</a> class. Then parse the result into an array of digit-character to calculate their sum.</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-import java.math.BigInteger;
+            <h4>The Code</h4>
+            <pre class="brush: java">import java.math.BigInteger;
 
 public class Problem20
 {
@@ -114,8 +110,8 @@ public class Problem20
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p19">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p21">Next &rarr;</a></p>
           </div>
           </section>
         </section>

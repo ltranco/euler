@@ -65,27 +65,24 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem : </p></h4>
-<p>Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:
-<br>1634 = 1<sup>4</sup> + 6<sup>4</sup> + 3<sup>4</sup> + 4<sup>4</sup>
-8208 = 8<sup>4</sup> + 2<sup>4</sup> + 0<sup>4</sup> + 8<sup>4</sup>
-9474 = 9<sup>4</sup> + 4<sup>4</sup> + 7<sup>4</sup> + 4<sup>4</sup>
-<p>As 1 = 1<sup>4</sup> is not a sum it is not included. The sum of these numbers is 1634 + 8208 + 9474 = 19316. Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.</p>
+            <h4>Problem 30: Digit Fifth Powers</p></h4>
+            <p>Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:
+            <br>1634 = 1<sup>4</sup> + 6<sup>4</sup> + 3<sup>4</sup> + 4<sup>4</sup>
+            8208 = 8<sup>4</sup> + 2<sup>4</sup> + 0<sup>4</sup> + 8<sup>4</sup>
+            9474 = 9<sup>4</sup> + 4<sup>4</sup> + 7<sup>4</sup> + 4<sup>4</sup>
+            <p>As 1 = 1<sup>4</sup> is not a sum it is not included. The sum of these numbers is 1634 + 8208 + 9474 = 19316. Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.</p>
 
+            <h4>The Catch</h4>
+            <p>How to find the upper bound, or the stop point for checking if numbers can be written as the sum of fifth powers of their digits.<br><br>
 
+            <h4>The Light</h4>
+            <p>The lowest 4-digit number is 1,000, maximum digit-5th power sum is 9<sup>5</sup> * 4 = 236,196. That means out of all 4-digit numbers, there are some numbers that can be written as the sum of fifth power of their digits (1,000 &lt; 236,196).
+            <br><br>The lowest 5-digit number is 10,000, maximum digit-5th power sum is 9<sup>5</sup> * 5 = 295,245. That means out of all 5-digit numbers, there are some numbers that can be written as the sum of fifth power of their digits (10,000 &lt; 295,245).
+            <br><br>The lowest 6-digit number is 100,000, maximum digit-5th power sum is 9<sup>5</sup> * 6 = 354,294. That means out of all 5-digit numbers, there are some numbers that can be written as the sum of fifth power of their digits (100,000 &lt; 354,294).
+            <br><br>The lowest 7-digit is 1,000,000, but their maximum digit-5th power sum only goes up to 9<sup>5</sup> * 7 = 413,343. This indicates all 7-digit numbers cannot be written as the sum of fifth power of their digits (1,000,000 &gt; 413,343). Since all 7-digit numbers are not valid, any numbers with more digits are also invalid. Thus, the 6-digit number can be a reasonable boundary. Upper limit is 9<sup>5</sup> * 6 = <strong>354,294</strong>.</p><br><br>
 
-<h4>The Catch</h4>
-<p style="margin-right: 30px;">How to find the upper bound, or the stop point for checking if numbers can be written as the sum of fifth powers of their digits.<br><br>
-
-<h4>The Light</h4>
-<p style="margin-right: 30px;">&clubs; The lowest 4-digit number is 1,000, maximum digit-5th power sum is 9<sup>5</sup> * 4 = 236,196. That means out of all 4-digit numbers, there are some numbers that can be written as the sum of fifth power of their digits (1,000 &lt; 236,196).<br><br>
-&clubs; The lowest 5-digit number is 10,000, maximum digit-5th power sum is 9<sup>5</sup> * 5 = 295,245. That means out of all 5-digit numbers, there are some numbers that can be written as the sum of fifth power of their digits (10,000 &lt; 295,245).<br><br>
-&clubs; The lowest 6-digit number is 100,000, maximum digit-5th power sum is 9<sup>5</sup> * 6 = 354,294. That means out of all 5-digit numbers, there are some numbers that can be written as the sum of fifth power of their digits (100,000 &lt; 354,294).<br><br>
-&clubs; The lowest 7-digit is 1,000,000, but their maximum digit-5th power sum only goes up to 9<sup>5</sup> * 7 = 413,343. This indicates all 7-digit numbers cannot be written as the sum of fifth power of their digits (1,000,000 &gt; 413,343. Since all 7-digit numbers are not valid, any numbers with more digits are also invalid. Thus, the 6-digit number can be a reasonable boundary. Upper limit is 9<sup>5</sup> * 6 = <strong>354,294</strong>.</p><br><br>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-public class Problem30
+            <h4>The Code</h4>
+            <pre class="brush: java">public class Problem30
 {
   public static void main(String[] args)
   {
@@ -111,11 +108,9 @@ public class Problem30
   }
 }
 </pre>
-<pre class="brush: java">Execution time: 55 ms.</pre>
-"
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p29">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p33">Next &rarr;</a></p>
           </div>
           </section>
         </section>

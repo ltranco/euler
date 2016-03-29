@@ -65,20 +65,17 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem : </p></h4>
-<p>2<sup>15</sup> = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26. What is the sum of the digits of the number 2<sup>1000</sup>?</p>
+            <h4>Problem 16: Power Digit Sum</p></h4>
+            <p>2<sup>15</sup> = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26. What is the sum of the digits of the number 2<sup>1000</sup>?</p>
 
+            <h4>The Catch</h4>
+            <p>How to store and quickly calculate extremely large numbers.</p>
 
+            <h4>The Light</h4>
+            <p>Use Java's <a href="http://docs.oracle.com/javase/1.4.2/docs/api/java/math/BigInteger.html" target="_blank">BigInteger</a> class as discussed in <a href="/euler/problems/p13">Problem 13</a>. Then parse the result into an array of digit-character to calculate their sum.</p>
 
-<h4>The Catch</h4>
-<p>How to store and quickly calculate extremely large numbers.</p>
-
-<h4>The Light</h4>
-<p>Use Java's <a href="http://docs.oracle.com/javase/1.4.2/docs/api/java/math/BigInteger.html" target="_blank">BigInteger</a> class as discussed in <a href="/euler/problems/p13">Problem 13</a>. Then parse the result into an array of digit-character to calculate their sum.</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-import java.math.BigInteger;
+            <h4>The Code</h4>
+            <pre class="brush: java">import java.math.BigInteger;
 
 public class Problem16
 {
@@ -99,9 +96,9 @@ public class Problem16
 }
 </pre>
 
-<div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+          <div class="navigation">
+            <p><a href="/euler/problems/p15">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p17">Next &rarr;</a></p>
           </div>
           </section>
         </section>
