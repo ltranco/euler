@@ -66,30 +66,27 @@
           <section>
             <h2 id=""></h2>
             <h4>Problem 46: Goldbach's Other Conjecture </p></h4>
-<p>It was proposed by <a href="http://en.wikipedia.org/wiki/Christian_Goldbach">Christian Goldbach</a> that every odd composite number can be written as the sum of a prime and twice a square.
+            <p>9 = 7 + 2 x 1<sup>2</sup>
+            <br>15 = 7 + 2 x 2<sup>2</sup>
+            <br>21 = 3 + 2 x 3<sup>2</sup>
+            <br>25 = 7 + 2 x 3<sup>2</sup>
+            <br>27 = 19 + 2 x 2<sup>2</sup>
+            <br>33 = 31 + 2 x 1<sup>2</sup></p>
+            <p>It turns out that the conjecture was false. What is the smallest odd composite that cannot be written as the sum of a prime and twice a square?</p>
 
-9 = 7 + 2x1<sup>2</sup>
-15 = 7 + 2 x 2<sup>2</sup>
-21 = 3 + 2 x 3<sup>2</sup>
-25 = 7 + 2 x 3<sup>2</sup>
-27 = 19 + 2 x 2<sup>2</sup>
-33 = 31 + 2 x 1<sup>2</sup></p>
-<p>It turns out that the conjecture was false. What is the smallest odd composite that cannot be written as the sum of a prime and twice a square?</p>
+            <h4>The Catch</h4>
+            <p>How to tell when an odd composite number cannot be written as the sum of a prime and twice a square.</p>
 
+            <h4>The Light</h4>
+            <p>To prove Goldbach wrong, we have to find the first instance where an odd number cannot be written as the sum of a prime and twice a square. The algorithm to check whether an odd number satisfies the above condition is fairly simple: for every odd number n, start substracting prime numbers p from a list of prime numbers, one at a time (p &le; n). If the difference is not twice a square, the corresponding number n will be the first instance to disprove Goldbach's other conjecture. In order to implement this algorithm, we need to:
+            <ul class="circle-ul">
+              <li>Provide a list of prime numbers. This can be done using the <a href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes" target="_blank">Sieve of Eratosthenes</a> discussed in <a href="/euler/problems/p35">Problem 35</a>.</li>
+              <li>Check whether a quantity x is twice a square. Utilize the discussion of inverse functions in <a href="/euler/problems/p42">Problem 42</a>, x is twice a square if sqrt(x/2) is an integer.</li>
+            </ul>
+            </p>
 
-
-<h4>The Catch</h4>
-<p>How to tell when an odd composite number cannot be written as the sum of a prime and twice a square.</p>
-
-<h4>The Light</h4>
-<p>To prove <img src="http://www.lvtran.com/wp-content/uploads/2014/02/cg.jpeg" alt="cg" width="150" height="150" class="alignnone size-full wp-image-420" />wrong, we have to find the first instance where an odd number cannot be written as the sum of a prime and twice a square. The algorithm to check whether an odd number satisfies the above condition is fairly simple: for every odd number <strong>n</strong>, start substracting prime numbers <strong>p</strong> from a list of prime numbers, one at a time (<strong>p</strong> &le; <strong>n</strong>). If the difference is not twice a square, the corresponding number <strong>n </strong>will be the first instance to disprove Goldbach's other conjecture. In order to implement this algorithm, we need to:
-&diams; Provide a list of prime numbers. This can be done using the <a href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes" target="_blank">Sieve of Eratosthenes</a> 				discussed in <a href="/euler/problems/p35/">Problem 35</a>.
-&diams; Check whether a quantity <strong>x</strong> is twice a square. Utilize the discussion of inverse functions in <a href="/euler/problems/p42">Problem 42</a>, <strong>x</strong> is twice a square if <strong>sqrt(x/2)</strong> is an integer.
-</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-import java.util.*;
+            <h4>The Code</h4>
+            <pre class="brush: java">import java.util.*;
 
 public class Problem46
 {
@@ -147,8 +144,8 @@ public class Problem46
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p45">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p47">Next &rarr;</a></p>
           </div>
           </section>
         </section>

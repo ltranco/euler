@@ -65,22 +65,19 @@
         <section class="story">
           <section>
             <h2 id=""></h2>
-            <h4>Problem 48: Champernowne's Constant</p></h4>
-<p>An irrational decimal fraction is created by concatenating the positive integers: 0.12345678910<span style="color:red">1</span>112131415161718192021...
-<br>It can be seen that the 12<sup>th</sup> digit of the fractional part is 1.
-<br>If <i>d</i><sub><i>n</i></sub> represents the <i>n</i><sup>th</sup> digit of the fractional part, find the value of the following expression <i>d</i><sub>1</sub> x <i>d</i><sub>10</sub> x <i>d</i><sub>100</sub> x <i>d</i><sub>1000</sub> x <i>d</i><sub>10000</sub> x <i>d</i><sub>100000</sub> x <i>d</i><sub>1000000</sub></p>
+            <h4>Problem 40: Champernowne's Constant</p></h4>
+            <p>An irrational decimal fraction is created by concatenating the positive integers: 0.12345678910<span style="color:red">1</span>112131415161718192021...
+            <br>It can be seen that the 12<sup>th</sup> digit of the fractional part is 1.
+            <br>If <i>d</i><sub><i>n</i></sub> represents the <i>n</i><sup>th</sup> digit of the fractional part, find the value of the following expression <i>d</i><sub>1</sub> x <i>d</i><sub>10</sub> x <i>d</i><sub>100</sub> x <i>d</i><sub>1000</sub> x <i>d</i><sub>10000</sub> x <i>d</i><sub>100000</sub> x <i>d</i><sub>1000000</sub></p>
 
+            <h4>The Catch</h4>
+            <p>How to quickly construct the irrational number by concatenating incremented-positive-integers.</p>
 
+            <h4>The Light</h4>
+            <p>Use Java's <a href="http://edelstein.pebbles.cs.cmu.edu/jadeite/main.php?api=java6&amp;state=class&amp;package=java.lang&amp;class=StringBuilder" target="_blank">StringBuilder</a> class to concatenate incremented-positive-integers. Since there is no actual calculation involved, the construction should be very quick. Once the irrational number is constructed, pick out requested indexed-digits and find their product.</p>
 
-<h4>The Catch</h4>
-<p>How to quickly construct the irrational number by concatenating incremented-positive-integers.</p>
-
-<h4>The Light</h4>
-<p>Use Java's <a href="http://edelstein.pebbles.cs.cmu.edu/jadeite/main.php?api=java6&amp;state=class&amp;package=java.lang&amp;class=StringBuilder" target="_blank">StringBuilder</a> class to concatenate incremented-positive-integers. Since there is no actual calculation involved, the construction should be very quick. Once the irrational number is constructed, pick out requested indexed-digits and find their product.</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-public class Problem40
+            <h4>The Code</h4>
+            <pre class="brush: java">public class Problem40
 {
   public static void main(String[] args)
   {
@@ -104,8 +101,8 @@ public class Problem40
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p39">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p41">Next &rarr;</a></p>
           </div>
           </section>
         </section>

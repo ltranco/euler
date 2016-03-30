@@ -66,31 +66,28 @@
           <section>
             <h2 id=""></h2>
             <h4>Problem 37: Truncatable Primes</p></h4>
-<p>The number 3797 has an interesting property. Being prime itself, it is possible to continuously remove digits from left to right, and remain prime at each stage: 3797, 797, 97, and 7. Similarly we can work from right to left: 3797, 379, 37, and 3.
-<br>Find the sum of the only eleven primes that are both truncatable from left to right and right to left. <br><br>NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.</p>
+            <p>The number 3797 has an interesting property. Being prime itself, it is possible to continuously remove digits from left to right, and remain prime at each stage: 3797, 797, 97, and 7. Similarly we can work from right to left: 3797, 379, 37, and 3.
+            <br>Find the sum of the only eleven primes that are both truncatable from left to right and right to left. <br><br>NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.</p>
 
+            <h4>The Catch</h4>
+            <p>How to manipulate the digits of a number to check if it is prime truncatable.</p><br><br>
 
+            <h4>The Light</h4>
+            <p>Parsing the number into a String to manipulate the digits and then parsing it back to integers is an inefficient method. Observe the following:
+            <br>3797 / 10 = 379
+            <br>3797 / 100 = 37
+            <br>3797 / 1000 = 3
+            <br>Dividing the number by multiples of 10 truncates digits from the right.
+            		
+            <br><br>3797 % 10 = 7
+            <br>3797 % 100 = 97
+            <br>3797 % 1000 = 797
+            <br>Take a modulo of the number by multiples of 10 truncates digits from the left.</p>
 
-<h4>The Catch</h4>
-<p>How to manipulate the digits of a number to check if it is prime truncatable.</p><br><br>
+            <p><br>Use prime checking method in <a href="/euler/problems/p3">Problem 3</a> to determine primness.</p>
 
-<h4>The Light</h4>
-<p>&clubs; Parsing the number into a String to manipulate the digits and then parsing it back to integers is an inefficient method. Observe the following:
-&nbsp;&nbsp;&nbsp;&nbsp;3797 / 10 = 379
-&nbsp;&nbsp;&nbsp;&nbsp;3797 / 100 = 37
-&nbsp;&nbsp;&nbsp;&nbsp;3797 / 1000 = 3
-Dividing the number by multiples of 10 truncates digits from the right.
-		
-&nbsp;&nbsp;&nbsp;&nbsp;3797 % 10 = 7
-&nbsp;&nbsp;&nbsp;&nbsp;3797 % 100 = 97
-&nbsp;&nbsp;&nbsp;&nbsp;3797 % 1000 = 797
-Modulus the number by multiples of 10 truncates digits from the left.</p>
-
-<p>&clubs; Use prime checking method in <a href="p3.html">Problem 3</a> to determine primness.</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-public class Problem37
+            <h4>The Code</h4>
+            <pre class="brush: java">public class Problem37
 {
   public static void main(String[] args)
   {
@@ -151,8 +148,8 @@ public class Problem37
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p36">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p38">Next &rarr;</a></p>
           </div>
           </section>
         </section>

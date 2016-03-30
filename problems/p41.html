@@ -66,34 +66,31 @@
           <section>
             <h2 id=""></h2>
             <h4>Problem 41: Pandigital Prime </p></h4>
-<p>We shall say that an <i>n</i>-digit number is pandigital if it makes use of all the digits 1 to <i>n</i> exactly once. For example, 2143 is a 4-digit pandigital and is also prime.
-<p>What is the largest <i>n</i>-digit pandigital prime that exists?</p>
+            <p>We shall say that an <i>n</i>-digit number is pandigital if it makes use of all the digits 1 to <i>n</i> exactly once. For example, 2143 is a 4-digit pandigital and is also prime.
+            <p>What is the largest <i>n</i>-digit pandigital prime that exists?</p>
 
+            <h4>The Catch</h4>
+            <p>How to check if a number is pandigital.
+            <br>How to efficiently check if pandigital numbers are also prime, since checking from 2 to 978,654,321 is extremely time consuming.</p>
 
+            <h4>The Light</h4>
+            <p>A pandigital number uses each digit from 1 - 9 exactly once, thus there are essentially 9 "templates" for pandigital numbers. The only 1-digit pandigital number is 1. If you take the digits from any 2-digit pandigital number and sort them numerically, you will get 12. Similarly, if you take the digits from any 3-digit pandigital number and sort them numerically, you will get 123. This concept applies for all pandigital numbers, so make 9 static template pandigital numbers. To check if a number with n-digits is pandigital, sort all digits numerically and if the result matches with n-digit template, then the number is pandigital.
+            			
+            <p><br>Recall that a number is divisible by 3 if and only if the digit sum of the number is divisible by 3. The list below shows that only 4-digit and 7-digit pandigital numbers can be prime, since the others are divisible by 3. Thus first check from the largest 7-digit pandigital number downward for the largest instance of a pandigital-prime-number. If it is not found, move to the 4-digit numbers range.
+            <p>
+            <br>1 + 2 = 3
+            <br>1 + 2 + 3 = 6
+            <br>1 + 2 + 3 + 4 = 10
+            <br>1 + 2 + 3 + 4 + 5 = 15
+            <br>1 + 2 + 3 + 4 + 5 + 6 = 21
+            <br>1 + 2 + 3 + 4 + 5 + 6 + 7 = 28
+            <br>1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36
+            <br>1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45
 
-<h4>The Catch</h4>
-<p style="margin-right: 30px;">How to check if a number is pandigital.
-How to efficiently check if pandigital numbers are also prime, since checking from 2 to 978,654,321 is extremely time consuming.</p>
+            <p><br>Since primes are odd, eliminate all even numbers in the search to speed up execution. Use discussion in <a href="/euler/problems/p3">Problem 3</a> to check for prime numbers.</p>
 
-<h4>The Light</h4>
-<p>&clubs; A pandigital number uses each digit from 1 - 9 exactly once, thus there are essentially 9 "templates" for pandigital numbers. The only 1-digit pandigital number is 1. If you take the digits from any 2-digit pandigital number and sort them numerically, you will get <strong>12</strong>. Similarly, if you take the digits from any 3-digit pandigital number and sort them numerically, you will get <strong>123.</strong> This concept applies for all pandigital numbers, so make 9 static template pandigital numbers. To check if a number with n-digits is pandigital, sort all digits numerically and if the result matches with n-digit template, then the number is pandigital.
-			
-<p>&clubs; Recall that a number is divisible by 3 if and only if the digit sum of the number is divisible by 3. The list below shows that only 4-digit and 7-digit pandigital numbers can be prime, since the others are divisible by 3. Thus first check from the largest 7-digit pandigital number downward for the largest instance of a pandigital-prime-number. If it is not found, move to the 4-digit numbers range.
-<p>
-&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 = 3
-&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 = 6
-&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 = 10
-&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 + 5 = 15
-&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 + 5 + 6 = 21
-&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 + 5 + 6 + 7 = 28
-&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36
-&nbsp;&nbsp;&nbsp;&nbsp;1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45
-
-<p>&clubs; Since primes are odd, eliminate all even numbers in the search to speed up execution. Use discussion in <a href="/euler/problems/p3/">Problem 3</a> to check for prime numbers.</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-import java.util.*;
+            <h4>The Code</h4>
+            <pre class="brush: java">import java.util.*;
 
 public class Problem41
 {
@@ -144,8 +141,8 @@ public class Problem41
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p40">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p42">Next &rarr;</a></p>
           </div>
           </section>
         </section>

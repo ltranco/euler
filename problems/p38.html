@@ -66,33 +66,32 @@
           <section>
             <h2 id=""></h2>
             <h4>Problem 38: Pandigital Multiples</p></h4>
-<p>Take the number 192 and multiply it by each of 1, 2, and 3:
-<br>192 x 1 = 192
-192 x 2 = 384
-192 x 3 = 576
-<br>By concatenating each product we get the 1 to 9 pandigital, 192384576. We will call 192384576 the concatenated product of 192 and (1,2,3). The same can be achieved by starting with 9 and multiplying by 1, 2, 3, 4, and 5, giving the pandigital, 918273645, which is the concatenated product of 9 and (1,2,3,4,5). 			
-<br>What is the largest 1 to 9 pandigital 9-digit number that can be formed as the concatenated product of an integer with (1,2, ... , <var>n</var>) where <var>n</var> > 1?</p>
+            <p>Take the number 192 and multiply it by each of 1, 2, and 3:
+            <br>192 x 1 = 192
+            <br>192 x 2 = 384
+            <br>192 x 3 = 576
+            <br>By concatenating each product we get the 1 to 9 pandigital, 192384576. We will call 192384576 the concatenated product of 192 and (1,2,3). The same can be achieved by starting with 9 and multiplying by 1, 2, 3, 4, and 5, giving the pandigital, 918273645, which is the concatenated product of 9 and (1,2,3,4,5). 			
+            <br>What is the largest 1 to 9 pandigital 9-digit number that can be formed as the concatenated product of an integer with (1,2, ..., n) where n > 1?</p>
 
+            <h4>The Catch</h4>
+            <p>How to find the optimal range of a candidate number c, which is to be multiplied with (1, 2, ... n) where n &gt; 1 to form the concatenated-product-pandigital number.
+            <br>How to check if a number is pandigital.</p>
 
+            <h4>The Light</h4>
+            <p>The desired pandigital number p has to have 9 digits from 1-9, exactly once each. A candidate number c has to be multiplied with 1 to n, with n &gt; 1. The products are then concatenated to form p. Define the notation (a)(b) to be "a concatenates b", or ab. To find the range of c, observe:
+            <ul class="circle-ul">
+              <li>c has to have less than 5 digits because the smallest 5-digit number is 10,000 and the smallest possible value for n is 2 (n &gt; 1). This gives (10,000 * 1)(10,000 * 2) = 1,000,020,000, which has 10 digits and thus does not satisfy the 9-digit condition. Thus c &lt; 10,000.</li>
+              <li>We were given to start with 9, so c has to start with 9. Thus 9 &lt;= c &lt; 9,999.</li>
+              <li>If c has 2 digits, its lowest value is 90. Assume n = 2 (lowest possible value), (90 * 1)(90 * 2) = 90,180, which does not satisfy the 9-digit condition. n = 3 gives 90,180,270 and n = 4 gives 90,180,270,360, both of which do not satisfy the 9-digit condition. Thus 90 &lt;= c &lt; 9,999.</li>
+              <li>If c has 3 digits, its lowest value is 900. Assume n = 2 (lowest possible value), (900 * 1)(900 * 2) = 9,001,800, which does not satisfy the 9-digit condition. n = 3 gives 90,018,002,700 and n = 4 gives 900,180,027,003,600, both of which do not satisfy the 9-digit condition. Thus 900 &lt;= c &lt; 9,999.</li>
+              <li>If c has 4 digits, its lowest value is 9,000. Assume n = 2 (lowest possible value), (9,000 * 1)(9,000 * 2) = 900,018,000, which satisfies the 9-digit condition. n = 3 gives 90,001,800,027,000, violating the 9-digit condition, thus any n &gt; 2 will not work.</li>
+              <li>Range for candidate c is 9,000 &lt;= c &lt; 9,999 and n can only be 2.</li>
+            </ul>
+            <p><br>Since we're looking for the largest instance, start with the greatest possible c candidate and decrement.</p>
+            <p><br>Follow the discussion in <a href="/euler/problems/p41">Problem 41</a> to check if a number is pandigital.</p>
 
-<h4>The Catch</h4>
-<p style="margin-right: 30px;">How to find the optimal range of a candidate number<strong> c</strong>, which is to be multiplied with (1, 2, ... n) where <strong>n</strong> &gt; 1 to form the concatenated-product-pandigital number.
-How to check if a number is pandigital.</p>
-
-<h4>The Light</h4>
-<p>&clubs; The desired pandigital number <strong>p</strong> has to have 9 digits from 1-9, exactly once each. A candidate number <strong>c</strong> has to be multiplied with 1 to strong>n</strong>, with <strong>n &gt; 1</strong>. The products are then concatenated to form <strong>p</strong>. Define the notation <strong>(a)(b)</strong> to be "<strong>a</strong> concatenates<strong> b</strong>", or <strong>ab</strong>. To find the range of <strong>c</strong>, observe:
-<br>&diams; <strong>c</strong> has to have less than 5 digits because the smallest 5-digit number is 10,000 and the smallest possible value for <strong>n</strong> is 2 (n &gt; 1). This gives (10,000 * 1)(10,000 * 2) = 1,000,020,000, which has 10 digits and thus does not satisfy the 9-digit condition. Thus <strong>c</strong> &lt; 10,000.
-&diams; We were given to start with 9, so <strong>c</strong> has to start with 9. Thus 9 &lt;=<strong> c</strong> &lt; 9,999.
-&diams; If<strong> c</strong> has 2 digits, its lowest value is 90. Assume <strong>n = 2</strong> (lowest possible value), (90 * 1)(90 * 2) = 90,180, which does not satisfy the 9-digit condition. <strong>n = 3</strong> gives 90,180,270 and <strong>n = 4</strong> gives 90,180,270,360, both of which do not satisfy the 9-digit condition. Thus 90 &lt;= <strong>c</strong> &lt; 9,999.
-&diams; If <strong>c</strong> has 3 digits, its lowest value is 900. Assume <strong>n = 2</strong> (lowest possible value), (900 * 1)(900 * 2) = 9,001,800, which does not satisfy the 9-digit condition. <strong>n = 3</strong> gives 90,018,002,700 and <strong>n = 4</strong> gives 900,180,027,003,600 both of which do not satisfy the 9-digit condition. Thus 900 &lt;= <strong>c</strong> &lt; 9,999.
-&diams; If <strong>c</strong> has 4 digits, its lowest value is 9,000. Assume <strong>n = 2</strong> (lowest possible value), (9,000 * 1)(9,000 * 2) = 900,018,000, which SATISFIES the 9-digit condition. <strong>n = 3</strong> gives 90,001,800,027,000 violates the 9-digit condition, thus any <strong>n &gt; 2</strong> will not work.
-&diams; Range for candidate <strong>c</strong> is <strong>9,000 &lt;= c &lt; 9,999</strong> and <strong>n</strong> can only be 2.
-<p>&clubs; Since we're looking for the largest instance, start with the greatest possible <strong>c</strong> candidate and decrement downward.</p>
-<p>&clubs; Follow the discussion in <a href="p41.html">Problem 41</a> to check if a number is pandigital.</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-import java.util.Arrays;
+            <h4>The Code</h4>
+            <pre class="brush: java">import java.util.Arrays;
 
 public class Problem38
 {
@@ -126,8 +125,8 @@ public class Problem38
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p37">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p39">Next &rarr;</a></p>
           </div>
           </section>
         </section>

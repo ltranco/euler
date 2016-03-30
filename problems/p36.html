@@ -66,49 +66,46 @@
           <section>
             <h2 id=""></h2>
             <h4>Problem 36: Double-base Palindromes</p></h4>
-<p>The decimal number, 585 = 1001001001<sub>2</sub> (binary), is palindromic in both bases.
-<br>Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2. (Please note that the palindromic number, in either base, may not include leading zeros.)</p>
+            <p>The decimal number, 585 = 1001001001<sub>2</sub> (binary), is palindromic in both bases.
+            <br>Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2. (Please note that the palindromic number, in either base, may not include leading zeros.)</p>
 
+            <h4>The Catch</h4>
+            <p>How to convert a decimal number to binary.
+            <br>How to check if a number is palindromic.</p>
 
+            <h4>The Light</h4>
+            <p>To convert a decimal number to binary, divide the number by 2 and list out the remainders for every division until the quotient is reduced to 0. Reverse the remainder list to find the binary result. 
 
-<h4>The Catch</h4>
-<p>How to convert a decimal number to binary.
-How to check if a number is palindromic.</p>
+            <br><br>For example, convert 12 to binary:
+            <table class="problem19">
+            <tr>
+            <td><p>Quotient</td>
+            <td><p>Remainer</td>
+            </tr>
+            <tr>
+            <td><p>12/2</td>
+            <td><p>0</td>
+            </tr>
+            <tr>
+            <td><p>6/2</td>
+            <td><p>0</td>
+            </tr>
+            <tr>
+            <td><p>3/2</td>
+            <td><p>1</td>
+            </tr>
+            <tr>
+            <td><p>1/2</td>
+            <td><p>1</td>
+            </tr>			
+            </table>
+            <p>12 in binary is 1100. You can either implement this approach or use Java's <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Integer.html" target="_blank">Integer</a> class' built-in function that converts decimal number to binary.</p>
+            			
+            <p>Use the discussion in <a href="/euler/problems/p4" target="_blank">Problem 4</a> on how to check if a number is palindromic.</li>
+            </ul></p><br><br>
 
-<h4>The Light</h4>
-<p>&clubs; To convert a decimal number to binary, divide the number by 2 and list out the remainders for every division until the quotient is reduced to 0. Reverse the remainder list to find the binary result. 
-
-For example, convert 12 to binary:
-<table>
-<tr>
-<td><p>Quotient</td>
-<td><p>Remainer</td>
-</tr>
-<tr>
-<td><p>12/2</td>
-<td><p>0</td>
-</tr>
-<tr>
-<td><p>6/2</td>
-<td><p>0</td>
-</tr>
-<tr>
-<td><p>3/2</td>
-<td><p>1</td>
-</tr>
-<tr>
-<td><p>1/2</td>
-<td><p>1</td>
-</tr>			
-</table>
-<p style="margin-right: 30px;">12 in binary is 1100. You can either implement this approach or use Java's <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Integer.html" target="_blank">Integer</a> class' built-in function that converts decimal number to binary.</p>
-			
-<p>&clubs; Use the discussion in <a href="/euler/problems/p4/" target="_blank">Problem 4</a> on how to check if a number is palindromic.</li>
-</ul></p><br><br>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-public class Problem36
+            <h4>The Code</h4>
+            <pre class="brush: java">public class Problem36
 {
   public static void main(String[] args)
   {
@@ -136,8 +133,8 @@ public class Problem36
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p35">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p37">Next &rarr;</a></p>
           </div>
           </section>
         </section>

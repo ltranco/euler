@@ -66,47 +66,46 @@
           <section>
             <h2 id=""></h2>
             <h4>Problem 35: Circular Primes </p></h4>
-"<p style="margin-right: 30px;">The number 197 is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime. There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97. How many circular primes are there below one million?</p>
-
-
+            <p>The number 197 is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime. There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97. How many circular primes are there below one million?</p>
 		
-<h4>The Catch</h4>
-<p>How to rotate a number.
-How to speed up the execution time since the current search range is from 1 to 1,000,000. Even if only odd numbers are checked, the search range is still 500,000 iterations.</p>
+            <h4>The Catch</h4>
+            <p>How to rotate a number.
+            <br>How to speed up the execution time since the current search range is from 1 to 1,000,000. Even if only odd numbers are checked, the search range is still 500,000 iterations.</p>
 
-<h4>The Light</h4>
-<p>&clubs;&nbsp;Utilizing digit-manipulating technique like in <a href="/euler/problems/p37/">Problem 37</a>, to rotate a number <strong>n</strong>:
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Find out how many<strong> rotation</strong> is needed. The number of rotation equals the number of digits <strong>n</strong> has. Divide <strong>(int) n</strong> by <strong>10</strong> to determine.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Find a multiplier for <strong>n</strong>. The multiplier should be <strong>10<sup>(number of digits of n)</sup></strong>.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; One of a rotated version of <strong>n = (n % 10 * multiplier) + (n/10)</strong>.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Repeat for all rotation.
+            <h4>The Light</h4>
+            <p>Utilizing digit-manipulating technique like in <a href="/euler/problems/p37">Problem 37</a>, to rotate a number n:
+            <ul class="circle-ul">
+              <li>Find out how many rotation is needed. The number of rotation equals the number of digits n has. Divide (int) n by 10 to determine.</li>
+              <li>Find a multiplier for n. The multiplier should be 10<sup>(number of digits of n)</sup>.</li>
+              <li>One of a rotated version of n = (n % 10 * multiplier) + (n/10).</li>
+              <li>Repeat for all rotation.</li>
+            </ul>
 
-For example, to rotate the number 812:
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; 812 has 3 digits, so there must be 3 rotations (but only <strong>2</strong> are necessary; the number 812 itself is counted as one rotation).
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Multiplier = 10<sup>2</sup> = 100
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Rotate 812 = 812%10 * 100 + (int)812/10 = 200 + 81 = 281
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Rotate 281 = 281%10 * 100 + (int)281/10 = 100 + 28 = 128
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Rotate 128 = 812 (which is why this 3rd rotation is unnecessary).</p>
+            <p><br>For example, to rotate the number 812:
+            <br>812 has 3 digits, so there must be 3 rotations (but only 2 are necessary; the number 812 itself is counted as one rotation).
+            <br>Multiplier = 10<sup>2</sup> = 100
+            <br>Rotate 812 = 812%10 * 100 + (int)812/10 = 200 + 81 = 281
+            <br>Rotate 281 = 281%10 * 100 + (int)281/10 = 100 + 28 = 128
+            <br>Rotate 128 = 812 (which is why this 3rd rotation is unnecessary).</p>
 
-<p>&clubs;&nbsp;If one digit of the number <strong>n </strong>is an even number or 5, then this number is not a prime and thus it not a ... circular prime.</p>
-<p>&clubs;&nbsp;Instead of looping through every odd, positive, natural number (which results in 500,000 iterations), loop through a list of prime numbers below an upper bound. It can be checked that this will result in only 78,498 iterations. To create this list of prime numbers, it is not efficient to loop from 2 to the upper bound and use the traditional prime check. Instead, there is a method called <a href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a> invented by
-<img src="http://www.lvtran.com/wp-content/uploads/2014/02/p35a.png" alt="p35a" width="278" height="275" class="aligncenter size-full wp-image-348" />
-It generates all prime numbers below 1,000,000 within 15-20 ms. The algorithm:
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Create a list of natural number from <strong>2</strong> to the upper bound.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Set <strong>p = 2</strong>, the first number of the list.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; From <strong>p</strong> to the upper bound, mark <strong>p</strong> and all of its <strong>multiples</strong>.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Set <strong>p</strong> to the next number in the list.
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; Repeat step 3 and 4 until <strong>p &lt;=</strong> <strong>sqrt(upper bound)</strong>. (NOTE: some numbers will be marked several times; this is okay)
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; The unmarked numbers left in the list are all prime.
+            <p><br>If one digit of the number n is an even number or 5, then this number is not a prime and thus it not a circular prime.</p>
+            <p><br>Instead of looping through every odd, positive, natural number (which results in 500,000 iterations), loop through a list of prime numbers below an upper bound. It can be checked that this will result in only 78,498 iterations. To create this list of prime numbers, it is not efficient to loop from 2 to the upper bound and use the traditional prime check. Instead, there is a method called <a href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a> invented by Eratosthenes of Cyrene, a Greek mathematician.
+            <br><br>It generates all prime numbers below 1,000,000 within 15-20 ms. The algorithm:
+            <ul class="circle-ul">
+              <li>Create a list of natural number from 2 to the upper bound.</li>
+              <li>Set p = 2, the first number of the list.</li>
+              <li>From p to the upper bound, mark p and all of its multiples.</li>
+              <li>Set p to the next number in the list.</li>
+              <li>Repeat step 3 and 4 until p &lt;= sqrt(upper bound). (NOTE: some numbers will be marked several times; this is okay)</li>
+              <li>The unmarked numbers left in the list are all prime.</li>
+            </ul>
+            <img src="../img/p35b.gif" alt="p35b"/>
+            <p align="center">(image courtesy of Wikipedia)</p>
+            <p><br>When creating the Sieve of Eratosthenes, it is best to store the result in a list L. It is, however, very costly (execution-time wise) to check if a number is prime by checking if 
+            it is in the list L. Thus, use the traditional prime check as discussed in <a href="p3.html">Problem 3</a>.</p>
 
-<img src="http://www.lvtran.com/wp-content/uploads/2014/02/p35b.gif" alt="p35b" width="445" height="369" class="aligncenter size-full wp-image-349" />
-<p align="center">(image courtesy of Wikipedia)</p>
-<p>&clubs;&nbsp;When creating the Sieve of Eratosthenes, it is best to store the result in a list L. It is, however, very costly (execution-time wise) to check if a number is prime by checking if 
-it is in the list L. Thus, use the traditional prime check as discussed in <a href="p3.html">Problem 3</a>.</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-import java.util.*;
+            <h4>The Code</h4>
+            <pre class="brush: java">import java.util.*;
 
 public class Problem35
 {
@@ -196,8 +195,8 @@ public class Problem35
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p34">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p36">Next &rarr;</a></p>
           </div>
           </section>
         </section>

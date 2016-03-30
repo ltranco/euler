@@ -66,38 +66,35 @@
           <section>
             <h2 id=""></h2>
             <h4>Problem 39: Integer Right Triangles</p></h4>
-<p>If <i>p</i> is the perimeter of a right angle triangle with integral length sides, {<i>a</i>,<i>b</i>,<i>c</i>}, there are exactly three solutions for <i>p</i> = 120: {20,48,52}, {24,45,51}, {30,40,50}. 
-<br>For which value of <i>p</i> &le; 1000, is the number of solutions maximized?</p>
+            <p>If <i>p</i> is the perimeter of a right angle triangle with integral length sides, {<i>a</i>,<i>b</i>,<i>c</i>}, there are exactly three solutions for <i>p</i> = 120: {20,48,52}, {24,45,51}, {30,40,50}. 
+            <br>For which value of <i>p</i> &le; 1000, is the number of solutions maximized?</p>
 
+            <h4>The Catch</h4>
+            <p>For every value of p, how to find and check different values of the 3 sides a, b, c of a right triangle.</p>
 
+            <h4>The Light</h4>
+            <p>The 3 sides a, b, and c are related under a<sup>2</sup> + b<sup>2</sup> = c<sup>2 </sup>(<a href="http://en.wikipedia.org/wiki/Pythagorean_theorem" target="_blank">Pythagorean theorem</a>) and a + b + c = p. Taking advantage of these 2 equations, we have:
+            <img src="../img/39.png"/>
+            <p>So if b is an integer, that means a, b, and c are one of p's Pythagorean triplets.</p>
+            <p><br>Recall:
+            <br>Sum of 2 odd numbers is even.
+            <br>Sum of 2 even numbers is even.
+            <br>Sum of an odd and an even number is odd.
+            <br>Product of 2 odd numbers is odd.
+            <br>Product of 2 even numbers is even.
+            <br>Product of an odd and an even number is even.
 
-<h4>The Catch</h4>
-<p>For every value of p, how to find and check different values of the 3 sides a, b, c of a right triangle.</p>
+            <p><br>Analyzing a<sup>2</sup> + b<sup>2</sup> = c<sup>2 </sup>shows that:
+            <br>If a and b are both even, then c is even and p is even.
+            <br>If a and b are both odd, then c is even and p is even.
+            <br>If either of a or b is even and the other is odd, then c is odd and p is even.</p>
 
-<h4>The Light</h4>
-<p>The 3 sides a, b, and c are related under a<sup>2</sup> + b<sup>2</sup> = c<sup>2 </sup>(<a href="http://en.wikipedia.org/wiki/Pythagorean_theorem" target="_blank">Pythagorean theorem</a>) and a + b + c = p. Taking advantage of these 2 equations, we have:
-<img src="http://www.lvtran.com/wp-content/uploads/2014/02/39.png" alt="39" width="474" height="514" class="aligncenter size-full wp-image-373" />
-<p>So if b is an integer, that means a, b, and c are one of p's Pythagorean triplets.</p>
-<p>Recall:
-Sum of 2 odd numbers is even.
-Sum of 2 even numbers is even.
-Sum of an odd and an even number is odd.
-Product of 2 odd numbers is odd.
-Product of 2 even numbers is even.
-Product of an odd and an even number is even.
+            <p><br>Thus, only even values for p have Pythagorean triplets.</p>
+            <p><br>Since a &le; b &lt; c, <strong>a &lt; p/3</strong> because if you divide p into 3 parts, c has to always be greater than the sum of a and b.</p>
+            <img src="../img/39b.png"/>
 
-<p>Analyzing a<sup>2</sup> + b<sup>2</sup> = c<sup>2 </sup>show that:
-If a and b are both even, then c is even and p is even.
-If a and b are both odd, then c is even and p is even.
-If either of a or b is even and the other is odd, then c is odd and p is even.</p>
-
-<p>Thus, <strong>only even values for p have Pythagorean triplets.</strong></p>
-<p>Since a &le; b &lt; c, <strong>a &lt; p/3</strong> because if you divide p into 3 parts, c has to always be greater than the sum of a and b.</p>
-<img src="http://www.lvtran.com/wp-content/uploads/2014/02/39b.png" alt="39b" width="455" height="79" class="aligncenter size-full wp-image-374" />
-
-<h4>The Code</h4>
-<pre class="brush: java">
-public class Problem39
+            <h4>The Code</h4>
+            <pre class="brush: java">public class Problem39
 {
   public static void main(String[] args)
   {
@@ -123,8 +120,8 @@ public class Problem39
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p38">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p40">Next &rarr;</a></p>
           </div>
           </section>
         </section>

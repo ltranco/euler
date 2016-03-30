@@ -66,26 +66,26 @@
           <section>
             <h2 id=""></h2>
             <h4>Problem 33: Digit Canceling Fractions</p></h4>
-<p>The fraction <sup>49</sup>/<sub>98</sub> is a curious fraction, as an inexperienced mathematician in attempting to simplify it may incorrectly believe that <sup>49</sup>/<sub>98</sub> = <sup>4</sup>/<sub>8</sub>, which is correct, is obtained by cancelling the 9s. We shall consider fractions like, <sup>30</sup>/<sub>50</sub> = <sup>3</sup>/<sub>5</sub>, to be trivial examples.
-<br>There are exactly four non-trivial examples of this type of fraction, less than one in value, and containing two digits in the numerator and denominator. 
-<br>If the product of these four fractions is given in its lowest common terms, find the value of the denominator.</p>
+                <p>The fraction <sup>49</sup>/<sub>98</sub> is a curious fraction, as an inexperienced mathematician in attempting to simplify it may incorrectly believe that <sup>49</sup>/<sub>98</sub> = <sup>4</sup>/<sub>8</sub>, which is correct, is obtained by cancelling the 9s. We shall consider fractions like, <sup>30</sup>/<sub>50</sub> = <sup>3</sup>/<sub>5</sub>, to be trivial examples.
+                  <br>There are exactly four non-trivial examples of this type of fraction, less than one in value, and containing two digits in the numerator and denominator. 
+                  <br>If the product of these four fractions is given in its lowest common terms, find the value of the denominator.
+                </p>
 
+                <h4>The Catch</h4>
+                <p>How to speed up the current search range (90 * 90 = 8,100 iterations) and avoid trivial cases.<br><br>
 
+                <h4>The Light</h4>
+                <p>While looping, skip numbers that are divisible by 10 because they are trivial cases.
+                <br><br>Given ab/cd, where a, b are digits of the numerator and c, d are digits of the denominator (a and b &lt; c and d), ab/cd can only be a curious fraction under one of these four circumstances:
+                <br>a = c
+                <br>a = d
+                <br>b = c
+                <br>b = d</p>
 
-<h4>The Catch</h4>
-<p style="margin-right: 30px;">How to speed up the current search range (90 * 90 = 8,100 iterations) and avoid trivial cases.<br><br>
+                <p><br>After execution, 4 fractions are found: 16/64, 19/95, 26/65, 49/98. Their products = 387296/38729600 = <strong>1/100</strong></p>
 
-<h4>The Light</h4>
-<p style="margin-right: 30px;">&clubs; While looping, skip numbers that are divisible by 10 because they are trivial cases.
-<br><br>&clubs; Given ab/cd, where a, b are digits of the numerator and c, d are digits of the denominator (a and b &lt; c and d), ab/cd can only be a curious fraction under one of these four circumstances:
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; a = c
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; a = d
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; b = c
-&nbsp;&nbsp;&nbsp;&nbsp;&diams; b = d</p>
-
-<h4>The Code</h4>
-<pre class="brush: java">
-public class Problem33
+                <h4>The Code</h4>
+                <pre class="brush: java">public class Problem33
 {
   public static void main(String[] args)
   {
@@ -143,11 +143,10 @@ public class Problem33
   }
 }
 </pre>
-<p>After execution, 4 fractions are found: 16/64, 19/95, 26/65, 49/98. Their products = 387296/38729600 = <strong>1/100</strong></p>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p8">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p2">Next &rarr;</a></p>
+            <p><a href="/euler/problems/p30">&larr; Back</a></p>
+            <p class="float-right"><a href="/euler/problems/p34">Next &rarr;</a></p>
           </div>
           </section>
         </section>
