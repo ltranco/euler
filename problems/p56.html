@@ -76,7 +76,7 @@
             <p><br>Another useful concept is <em>Expected Digit Sum</em>, which can be calculated by multiplying the number of digits by <strong>4.5</strong>. The reason: 4.5 is the mean of all digits ((0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9)/10 = 45/10 = <strong>4.5</strong>). So if these digits are distributed equally within a number, then the number's digit sum can be approximated by the mentioned formula. <br>
             <br>For example, the number 1234567890 has 10 digits and its expected digit sum is 10 * 4.5 = 45 and its actual digit sum is 45. The number 123456789 has 9 digits and its expected digit sum is 9 * 4.5 = 40.5 and its actual digit sum is 45. This is a fairly good estimation for larger numbers.
             <p><br>Using these concepts, consider the number <strong>90<sup>90</sup></strong>, which has 176 digits and whose expected digit  sum is 792 and the number <strong>90<sup>99</sup></strong>, which has 194 digits and whose expected digit sum is 873. Generally, more digits means greater digit sum. It can be seen that the maximum digit sum is not in the range from a = b = 2 to a = b = 90 (because <strong>90<sup>99</sup></strong> has more digits and thus a greater digit sum than <strong>90<sup>90</sup></strong>). Thus, it is safe to start the search range from <strong>a = b = 90</strong>.
-            <p><br>Having the search range minimized, a brute force approach can be implemented using Java's BigInteger class. Use the discussion about ASCII values in <a href="/euler/problems/p22" target="_blank">Problem 22</a> to tweak the method that calculates the digit sum.</p>
+            <p><br>Having the search range minimized, a brute force approach can be implemented using Java's BigInteger class. Use the discussion about ASCII values in <a href="https://ltran.co/euler/problems/p22" target="_blank">Problem 22</a> to tweak the method that calculates the digit sum.</p>
 
             <h4>The Code</h4>
             <pre class="brush: java">
@@ -116,8 +116,8 @@ public class Problem56
 </pre>
 
 <div class="navigation">
-            <p><a href="/euler/problems/p48">&larr; Back</a></p>
-            <p class="float-right"><a href="/euler/problems/p67">Next &rarr;</a></p>
+            <p><a href="https://ltran.co/euler/problems/p48">&larr; Back</a></p>
+            <p class="float-right"><a href="https://ltran.co/euler/problems/p67">Next &rarr;</a></p>
           </div>
           </section>
         </section>
